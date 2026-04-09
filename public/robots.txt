@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /trade/dashboard
+Disallow: /api/
+
+Sitemap: https://apeax.com.au/sitemap.xml

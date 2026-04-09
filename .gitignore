@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.netlify/
+.env
+.env.*
+*.log
+dist/
+build/
+.vscode/
+.idea/
+*.zip
+.~lock.*

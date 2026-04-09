@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Dashboard · APEAX Distribution</title>
+  <meta name="description" content="Your APEAX trade account dashboard. Orders, warranty, landed cost, stock.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../_shared.css">
+  <style>
+    body { background: var(--apx-void); }
+
+    .dash-wrap {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+      padding-top: 72px;
+    }
+
+    .dash-nav {
+      background: var(--apx-carbon);
+      border-right: 1px solid var(--apx-wire);
+      padding: var(--sp-6) var(--sp-5);
+      position: sticky;
+      top: 72px;
+      height: calc(100vh - 72px);
+      overflow-y: auto;
+    }
+
+    .dash-account {
+      padding: var(--sp-5);
+      background: var(--apx-graphite);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-md);
+      margin-bottom: var(--sp-6);
+    }
+    .dash-account__label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-ash);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-2);
+    }
+    .dash-account__name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--apx-bone);
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .dash-account__tier {
+      margin-top: var(--sp-3);
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(0, 229, 200, 0.08);
+      border: 1px solid var(--apx-trace);
+      color: var(--apx-xenon);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: var(--rad-sm);
+    }
+
+    .dash-menu {
+      list-style: none;
+    }
+    .dash-menu__section {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-ash);
+      text-transform: uppercase;
+      padding: var(--sp-5) var(--sp-3) var(--sp-3);
+    }
+    .dash-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-3) var(--sp-4);
+      color: var(--apx-mist);
+      font-size: var(--fs-body-sm);
+      border-radius: var(--rad-md);
+      margin-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .dash-menu a:hover {
+      background: var(--apx-graphite);
+      color: var(--apx-bone);
+    }
+    .dash-menu a.is-active {
+      background: rgba(0, 229, 200, 0.08);
+      color: var(--apx-xenon);
+      border-left: 2px solid var(--apx-xenon);
+      padding-left: calc(var(--sp-4) - 2px);
+    }
+    .dash-menu a .pill {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      background: var(--apx-flare);
+      color: var(--apx-void);
+      border-radius: var(--rad-sm);
+    }
+
+    .dash-signout {
+      margin-top: var(--sp-8);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--apx-wire);
+    }
+    .dash-signout a {
+      display: block;
+      padding: var(--sp-3) var(--sp-4);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--apx-ash);
+    }
+    .dash-signout a:hover { color: var(--apx-crimson); }
+
+    .dash-main {
+      padding: var(--sp-7) var(--sp-8) var(--sp-10);
+    }
+
+    .dash-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--sp-7);
+      flex-wrap: wrap;
+      gap: var(--sp-5);
+    }
+    .dash-head__title {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--sp-3);
+    }
+    .dash-head__sub {
+      color: var(--apx-mist);
+      font-size: var(--fs-body-md);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--sp-5);
+      margin-bottom: var(--sp-8);
+    }
+    .kpi {
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-6);
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--apx-xenon);
+    }
+    .kpi--warm::before { background: var(--apx-flare); }
+    .kpi--green::before { background: var(--apx-verdigris); }
+    .kpi--red::before { background: var(--apx-crimson); }
+
+    .kpi__label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.14em;
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .kpi__value {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2.5rem;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--apx-bone);
+    }
+    .kpi__delta {
+      margin-top: var(--sp-3);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-verdigris);
+    }
+    .kpi__delta--down { color: var(--apx-crimson); }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--sp-7);
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-lg);
+      overflow: hidden;
+    }
+    .panel__head {
+      padding: var(--sp-5) var(--sp-6);
+      border-bottom: 1px solid var(--apx-wire);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .panel__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .panel__link {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--apx-xenon);
+    }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .order-table th,
+    .order-table td {
+      padding: var(--sp-4) var(--sp-6);
+      text-align: left;
+      border-bottom: 1px solid var(--apx-wire);
+      font-size: var(--fs-body-sm);
+    }
+    .order-table th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-ash);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .order-table tr:last-child td { border-bottom: none; }
+    .order-table tbody tr:hover { background: var(--apx-graphite); cursor: pointer; }
+    .order-table .order-id {
+      font-family: var(--font-mono);
+      color: var(--apx-mist);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
+    .order-table .order-sku {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--apx-xenon);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--rad-sm);
+      border: 1px solid;
+    }
+    .status--pending { color: var(--apx-flare); border-color: var(--apx-trace-warm); background: rgba(255, 176, 32, 0.06); }
+    .status--production { color: var(--apx-xenon); border-color: var(--apx-trace); background: rgba(0, 229, 200, 0.06); }
+    .status--transit { color: #8FB6FF; border-color: rgba(143, 182, 255, 0.4); background: rgba(143, 182, 255, 0.06); }
+    .status--qa { color: var(--apx-bone); border-color: var(--apx-wire-strong); background: var(--apx-graphite); }
+    .status--delivered { color: var(--apx-verdigris); border-color: rgba(47, 210, 126, 0.4); background: rgba(47, 210, 126, 0.06); }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-5);
+    }
+
+    .action-list {
+      padding: var(--sp-5) var(--sp-6) var(--sp-6);
+    }
+    .action-item {
+      padding: var(--sp-4) 0;
+      border-bottom: 1px solid var(--apx-wire);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--sp-4);
+    }
+    .action-item:last-child { border-bottom: none; }
+    .action-item__text {
+      font-size: var(--fs-body-sm);
+      color: var(--apx-bone);
+      line-height: 1.5;
+    }
+    .action-item__text .sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--apx-ash);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: var(--sp-2);
+    }
+    .action-item__cta {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--apx-xenon);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .quick-order {
+      padding: var(--sp-6);
+      background: linear-gradient(135deg, rgba(0, 229, 200, 0.06), rgba(0, 229, 200, 0.01));
+      border: 1px solid var(--apx-trace);
+      border-radius: var(--rad-lg);
+    }
+    .quick-order h4 {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: 1rem;
+      color: var(--apx-xenon);
+      margin-bottom: var(--sp-3);
+    }
+    .quick-order p {
+      color: var(--apx-mist);
+      font-size: var(--fs-body-sm);
+      margin-bottom: var(--sp-5);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1100px) {
+      .dash-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .dash-wrap { grid-template-columns: 1fr; }
+      .dash-nav { position: static; height: auto; }
+      .dash-main { padding: var(--sp-6) var(--gutter) var(--sp-9); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="../passenger.html">Passenger</a>
+      <a href="../heavy.html">Heavy</a>
+      <a href="#" class="is-active">Trade Dashboard</a>
+      <a href="login.html" class="nav__cta">Sign Out</a>
+    </div>
+  </nav>
+
+  <div class="dash-wrap">
+
+    <aside class="dash-nav">
+      <div class="dash-account">
+        <div class="dash-account__label">Trade Account</div>
+        <div class="dash-account__name">Demo Installer Pty Ltd</div>
+        <span class="dash-account__tier">Tier 2 · Installer</span>
+      </div>
+
+      <ul class="dash-menu">
+        <li class="dash-menu__section">Workspace</li>
+        <li><a href="#" class="is-active">Dashboard <span class="pill">3</span></a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Quotes</a></li>
+        <li><a href="#">Warranty Register</a></li>
+
+        <li class="dash-menu__section">Catalogue</li>
+        <li><a href="#">Passenger Films</a></li>
+        <li><a href="#">Heavy Films</a></li>
+        <li><a href="#">Price List</a></li>
+        <li><a href="#">Stock Status</a></li>
+
+        <li class="dash-menu__section">Account</li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Installers</a></li>
+        <li><a href="#">Invoices</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+
+      <div class="dash-signout">
+        <a href="login.html">← Sign Out</a>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+
+      <header class="dash-head">
+        <div>
+          <h1 class="dash-head__title">Good afternoon, Demo.</h1>
+          <p class="dash-head__sub">Here's your trade snapshot for Thursday 9 April 2026.</p>
+        </div>
+        <a href="#" class="btn btn--primary">
+          New Order
+          <span class="btn__arrow">→</span>
+        </a>
+      </header>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi__label">Open Orders</div>
+          <div class="kpi__value">3</div>
+          <div class="kpi__delta">▲ 1 since last login</div>
+        </div>
+        <div class="kpi kpi--warm">
+          <div class="kpi__label">In Production (APEAX USA)</div>
+          <div class="kpi__value">2</div>
+          <div class="kpi__delta">ETA 14 days avg</div>
+        </div>
+        <div class="kpi kpi--green">
+          <div class="kpi__label">YTD Trade Spend</div>
+          <div class="kpi__value">$18.4k</div>
+          <div class="kpi__delta">▲ 22% vs last qtr</div>
+        </div>
+        <div class="kpi kpi--red">
+          <div class="kpi__label">Warranty Reg Due</div>
+          <div class="kpi__value">2</div>
+          <div class="kpi__delta kpi__delta--down">Register within 7 days</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+
+        <div class="panel">
+          <div class="panel__head">
+            <div class="panel__title">Recent Orders</div>
+            <a href="#" class="panel__link">View all →</a>
+          </div>
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Status</th>
+                <th>ETA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight: 600;">APX-00142</div>
+                  <div class="order-id">07 Apr 2026</div>
+                </td>
+                <td>
+                  <div>OptiShield HV</div>
+                  <div class="order-sku">APX-WPF-WPF60X100</div>
+                </td>
+                <td>4 rolls</td>
+                <td><span class="status status--production">Production</span></td>
+                <td>21 Apr 2026</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600;">APX-00141</div>
+                  <div class="order-id">05 Apr 2026</div>
+                </td>
+                <td>
+                  <div>Gloss 60 PPF</div>
+                  <div class="order-sku">APX-PPF-G60X15-001</div>
+                </td>
+                <td>2 rolls</td>
+                <td><span class="status status--transit">In Transit</span></td>
+                <td>12 Apr 2026</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600;">APX-00138</div>
+                  <div class="order-id">28 Mar 2026</div>
+                </td>
+                <td>
+                  <div>RadShield 70</div>
+                  <div class="order-sku">APX-CT-70S40-001</div>
+                </td>
+                <td>6 rolls</td>
+                <td><span class="status status--qa">GUARDIAN QA</span></td>
+                <td>11 Apr 2026</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600;">APX-00134</div>
+                  <div class="order-id">18 Mar 2026</div>
+                </td>
+                <td>
+                  <div>OptiShield HV</div>
+                  <div class="order-sku">APX-WPF-WPF60X100</div>
+                </td>
+                <td>1 roll</td>
+                <td><span class="status status--delivered">Delivered</span></td>
+                <td>03 Apr 2026</td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight: 600;">APX-00129</div>
+                  <div class="order-id">04 Mar 2026</div>
+                </td>
+                <td>
+                  <div>PaintShield LV</div>
+                  <div class="order-sku">APX-PNT-PS-LV</div>
+                </td>
+                <td>1 kit</td>
+                <td><span class="status status--delivered">Delivered</span></td>
+                <td>22 Mar 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="side-panel">
+
+          <div class="quick-order">
+            <h4>Quick Order</h4>
+            <p>
+              Need a familiar SKU? Re-order by last PO. SHIELD will price in AUD landed cost
+              and commit an ETA within 4 hours.
+            </p>
+            <a href="#" class="btn btn--outline" style="padding: 12px 20px; font-size: 0.75rem; width: 100%; justify-content: center;">
+              Start Quick Order
+              <span class="btn__arrow">→</span>
+            </a>
+          </div>
+
+          <div class="panel">
+            <div class="panel__head">
+              <div class="panel__title">Action Required</div>
+            </div>
+            <div class="action-list">
+              <div class="action-item">
+                <div class="action-item__text">
+                  Register warranty for APX-00134
+                  <span class="sub">Delivered 3 Apr · Due 10 Apr</span>
+                </div>
+                <a href="#" class="action-item__cta">Register →</a>
+              </div>
+              <div class="action-item">
+                <div class="action-item__text">
+                  Register warranty for APX-00129
+                  <span class="sub">Delivered 22 Mar · Overdue</span>
+                </div>
+                <a href="#" class="action-item__cta">Register →</a>
+              </div>
+              <div class="action-item">
+                <div class="action-item__text">
+                  Approve quote APX-Q-00088
+                  <span class="sub">Expires 12 Apr 2026</span>
+                </div>
+                <a href="#" class="action-item__cta">Review →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    /* ----------------------------------------------------------------------
+       Trade Dashboard · GET /api/trade-dashboard
+       Session guard: redirects to login.html if no JWT found.
+       Hydrates KPI + order data when SHIELD returns a real payload.
+       Sanitised response from Netlify Function strips all cost fields.
+       ---------------------------------------------------------------------- */
+    (function () {
+      function readSession() {
+        try {
+          const raw = localStorage.getItem('apx_trade_session') || sessionStorage.getItem('apx_trade_session');
+          if (!raw) return null;
+          const parsed = JSON.parse(raw);
+          if (!parsed || !parsed.token) return null;
+          if (parsed.expiresAt && new Date(parsed.expiresAt).getTime() < Date.now()) {
+            localStorage.removeItem('apx_trade_session');
+            sessionStorage.removeItem('apx_trade_session');
+            return null;
+          }
+          return parsed;
+        } catch (e) {
+          return window.__apxSession || null;
+        }
+      }
+
+      function clearSession() {
+        try {
+          localStorage.removeItem('apx_trade_session');
+          sessionStorage.removeItem('apx_trade_session');
+        } catch (e) { /* ignore */ }
+      }
+
+      const session = readSession();
+      if (!session) {
+        window.location.replace('login.html');
+        return;
+      }
+
+      // Expose session for other scripts on this page
+      window.APEAX = window.APEAX || {};
+      window.APEAX.session = session;
+      window.APEAX.logout = function () {
+        clearSession();
+        window.location.replace('login.html');
+      };
+
+      // Stamp trading name into any placeholder the prototype exposes
+      if (session.tradeAccount && session.tradeAccount.tradingAs) {
+        const nameEls = document.querySelectorAll('[data-apx-trading-as]');
+        nameEls.forEach(function (el) { el.textContent = session.tradeAccount.tradingAs; });
+      }
+
+      // Hydrate from live SHIELD backend. Graceful fallback to prototype data.
+      async function hydrate() {
+        try {
+          const res = await fetch('/api/trade-dashboard', {
+            method: 'GET',
+            headers: {
+              'Authorization': 'Bearer ' + session.token,
+              'Accept': 'application/json'
+            }
+          });
+
+          if (res.status === 401) {
+            window.APEAX.logout();
+            return;
+          }
+
+          if (!res.ok) {
+            console.warn('[trade-dashboard] upstream', res.status);
+            return;
+          }
+
+          const body = await res.json().catch(function () { return {}; });
+          const data = body.data || body;
+          if (!data) return;
+
+          // KPI updates. Each KPI card carries a data-apx-kpi attribute when wired.
+          const kpiMap = {
+            'open-orders': data.openOrders,
+            'in-production': data.inProduction,
+            'ytd-spend': data.ytdSpendAud,
+            'warranty-due': data.warrantyDue
+          };
+          Object.keys(kpiMap).forEach(function (key) {
+            const val = kpiMap[key];
+            if (val === undefined || val === null) return;
+            const el = document.querySelector('[data-apx-kpi="' + key + '"]');
+            if (el) el.textContent = val;
+          });
+
+          // Optional: dispatch event so richer widgets can render
+          document.dispatchEvent(new CustomEvent('apeax:dashboard-hydrated', { detail: data }));
+        } catch (err) {
+          console.error('[trade-dashboard] hydrate failed', err);
+        }
+      }
+
+      hydrate();
+    })();
+  </script>
+
+</body>
+</html>

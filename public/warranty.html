@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warranty · APEAX XTREME Series</title>
+  <meta name="description" content="APEAX XTREME Series warranty terms. 10-year structural, lifetime solar, 5-year paint protection. ISO 9001 backed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .warranty-hero {
+      padding: 180px var(--gutter) var(--sp-9);
+      position: relative;
+      overflow: hidden;
+    }
+    .warranty-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(0, 229, 200, 0.14), transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 176, 32, 0.08), transparent 55%),
+        linear-gradient(180deg, #0a1520 0%, #05060A 60%);
+      z-index: 0;
+    }
+    .warranty-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .warranty-hero__headline {
+      max-width: 18ch;
+      margin-bottom: var(--sp-5);
+    }
+    .warranty-hero__lead { max-width: 62ch; }
+
+    .back-link {
+      position: absolute;
+      top: 120px;
+      left: var(--gutter);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      z-index: 2;
+    }
+    .back-link:hover { color: var(--apx-xenon); }
+
+    .warranty-matrix {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter) var(--sp-9);
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-lg);
+      overflow: hidden;
+    }
+    .matrix-table th,
+    .matrix-table td {
+      padding: var(--sp-5) var(--sp-6);
+      text-align: left;
+      border-bottom: 1px solid var(--apx-wire);
+    }
+    .matrix-table thead th {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-ash);
+      text-transform: uppercase;
+      background: var(--apx-graphite);
+      font-weight: 500;
+    }
+    .matrix-table tr:last-child td { border-bottom: none; }
+    .matrix-table tbody tr:hover { background: rgba(0, 229, 200, 0.02); }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--apx-bone);
+      font-size: 1.05rem;
+    }
+    .product-sku {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-ash);
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+    .term {
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: var(--apx-xenon);
+      font-size: 1.5rem;
+    }
+    .term--warm { color: var(--apx-flare); }
+
+    .coverage {
+      color: var(--apx-mist);
+      font-size: var(--fs-body-sm);
+      line-height: 1.5;
+    }
+
+    .conditions {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter) var(--sp-9);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--sp-8);
+      align-items: start;
+    }
+
+    .conditions__sidebar {
+      position: sticky;
+      top: 120px;
+    }
+
+    .condition-block {
+      margin-bottom: var(--sp-7);
+      padding-bottom: var(--sp-6);
+      border-bottom: 1px solid var(--apx-wire);
+    }
+    .condition-block:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+    .condition-block__title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--sp-4);
+      color: var(--apx-bone);
+    }
+    .condition-block__title::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 2px;
+      background: var(--apx-xenon);
+      margin-right: var(--sp-4);
+      vertical-align: middle;
+    }
+    .condition-block p {
+      color: var(--apx-mist);
+      line-height: 1.7;
+      margin-bottom: var(--sp-4);
+    }
+    .condition-block ul {
+      list-style: none;
+      margin-top: var(--sp-3);
+    }
+    .condition-block li {
+      padding: var(--sp-3) 0;
+      padding-left: var(--sp-6);
+      position: relative;
+      color: var(--apx-mist);
+      font-size: var(--fs-body-md);
+      line-height: 1.6;
+    }
+    .condition-block li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--apx-xenon);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    .condition-block li.negative::before {
+      content: '×';
+      color: var(--apx-crimson);
+    }
+
+    .claim-cta {
+      background: linear-gradient(135deg, rgba(0, 229, 200, 0.08), rgba(0, 229, 200, 0.01));
+      border: 1px solid var(--apx-trace);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-7) var(--sp-6);
+      text-align: center;
+    }
+    .claim-cta h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+      color: var(--apx-xenon);
+    }
+    .claim-cta p {
+      color: var(--apx-mist);
+      font-size: var(--fs-body-sm);
+      margin-bottom: var(--sp-5);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 980px) {
+      .conditions { grid-template-columns: 1fr; }
+      .conditions__sidebar { position: static; }
+      .matrix-table { font-size: var(--fs-body-sm); }
+      .matrix-table th, .matrix-table td { padding: var(--sp-4); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="passenger.html">Passenger</a>
+      <a href="heavy.html">Heavy</a>
+      <a href="warranty.html" class="is-active">Warranty</a>
+      <a href="trade/login.html" class="nav__cta">Trade Login</a>
+    </div>
+  </nav>
+
+  <a href="index.html" class="back-link">← Back to Gate</a>
+
+  <header class="warranty-hero">
+    <div class="warranty-hero__inner">
+      <p class="eyebrow">Warranty Terms · XTREME Series</p>
+      <h1 class="h-xl warranty-hero__headline">The paper trail behind the performance.</h1>
+      <p class="lead warranty-hero__lead">
+        Every APEAX film carries a clear, written warranty. Structural cover runs to 10 years.
+        Solar films carry lifetime cover. All warranty work is registered on your behalf
+        inside an ISO 9001 controlled portal, not a spreadsheet.
+      </p>
+    </div>
+  </header>
+
+  <section class="warranty-matrix">
+    <div class="section-header">
+      <p class="eyebrow">Matrix</p>
+      <h2 class="h-md" style="max-width: 22ch;">Warranty by product family.</h2>
+    </div>
+
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Term</th>
+          <th>Coverage</th>
+          <th>Conditions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="product-name">OptiShield HV</div>
+            <div class="product-sku">APX-WPF-WPF60X100</div>
+          </td>
+          <td><span class="term">10yr</span></td>
+          <td class="coverage">Delamination, bubbling, optical failure, UV degradation. Glass substrate structural integrity.</td>
+          <td class="coverage">Professional installation. Registered within 7 days.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">OptiShield LV</div>
+            <div class="product-sku">APX-WPF-WPF60X15</div>
+          </td>
+          <td><span class="term">3yr</span></td>
+          <td class="coverage">Delamination, hydrophobic surface loss, optical clarity. Side and panoramic glazing.</td>
+          <td class="coverage">Professional installation. Correct cleaning regime.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">Gloss 60 PPF</div>
+            <div class="product-sku">APX-PPF-G60X15-001</div>
+          </td>
+          <td><span class="term">10yr</span></td>
+          <td class="coverage">Yellowing, cracking, delamination, hardcoat failure. Self-healing function.</td>
+          <td class="coverage">Professional installation. Original paintwork condition.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">PaintShield LV / XT</div>
+            <div class="product-sku">APX-PNT-PS-LV / PS-XT</div>
+          </td>
+          <td><span class="term">5yr</span></td>
+          <td class="coverage">Chip resistance, stain resistance, seam integrity on high-wear zones.</td>
+          <td class="coverage">Substrate compatibility check on install.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">RadShield (Solar)</div>
+            <div class="product-sku">APX-CT-70S40-001</div>
+          </td>
+          <td><span class="term">Lifetime</span></td>
+          <td class="coverage">Colour stability, UV block, adhesive performance, ceramic layer integrity.</td>
+          <td class="coverage">First owner. Registered install. No abrasive cleaners.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">ClearShield (Structural)</div>
+            <div class="product-sku">APX-CL-SF-100</div>
+          </td>
+          <td><span class="term">10yr</span></td>
+          <td class="coverage">Optical clarity, adhesive, impact hold on flat glazing.</td>
+          <td class="coverage">Commercial install. GUARDIAN QA hold release.</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="product-name">GrafShield (Anti-Graffiti)</div>
+            <div class="product-sku">APX-AG-SF-60</div>
+          </td>
+          <td><span class="term term--warm">Sacrificial</span></td>
+          <td class="coverage">Designed to be removed and replaced. Manufacturing defects only.</td>
+          <td class="coverage">Replacement film, not indefinite term.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="conditions">
+
+    <aside class="conditions__sidebar">
+      <div class="claim-cta">
+        <h4>Need to Lodge a Claim?</h4>
+        <p>
+          All warranty claims are handled by SHIELD on your behalf. Vehicle details, install
+          date, and photos are enough to open a case.
+        </p>
+        <a href="mailto:shield@asi-australia.com.au" class="btn btn--outline" style="padding: 12px 20px; font-size: 0.75rem; width: 100%; justify-content: center;">
+          Contact SHIELD
+          <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="conditions__body">
+
+      <div class="condition-block">
+        <h3 class="condition-block__title">What's Covered</h3>
+        <ul>
+          <li>Manufacturing defects across the full warranty term</li>
+          <li>Delamination, yellowing, bubbling, hardcoat failure</li>
+          <li>UV protection performance drop below stated spec</li>
+          <li>Adhesive failure under normal environmental conditions</li>
+          <li>Optical distortion above stated Australian compliance thresholds</li>
+          <li>Full film replacement including installation labour within year 1</li>
+        </ul>
+      </div>
+
+      <div class="condition-block">
+        <h3 class="condition-block__title">What's Not Covered</h3>
+        <ul>
+          <li class="negative">Damage from impact, stone strike, or collision</li>
+          <li class="negative">Abrasive or solvent cleaning agents not approved by APEAX</li>
+          <li class="negative">Self-inflicted damage during removal or modification</li>
+          <li class="negative">Installation by non-vetted, non-trained installers</li>
+          <li class="negative">Use outside the vehicle category the film is spec'd for</li>
+          <li class="negative">Film applied to glass with pre-existing structural damage</li>
+        </ul>
+      </div>
+
+      <div class="condition-block">
+        <h3 class="condition-block__title">Installation Requirements</h3>
+        <p>
+          APEAX warranty is conditional on installation by a vetted trade installer. Trade
+          installers are required to complete APEAX technical training, maintain controlled
+          install environments where required, and register every install via the APEAX
+          Distribution warranty portal within 7 days of completion.
+        </p>
+        <p>
+          For heavy vehicle applications, SHIELD supplies vehicle-specific install templates,
+          waste allowances, and QA sign-off documentation as part of every trade order.
+        </p>
+      </div>
+
+      <div class="condition-block">
+        <h3 class="condition-block__title">Claim Process</h3>
+        <p>
+          Claims are lodged through SHIELD and assessed inside the ASI Portal Films Management
+          Module. Average response time is under 48 hours. Approved claims are progressed
+          directly with APEAX through the Distribution Division, no third party involved.
+        </p>
+        <ul>
+          <li>Claim acknowledgement within 4 hours</li>
+          <li>Initial assessment within 48 hours</li>
+          <li>APEAX escalation for approved claims within 5 business days</li>
+          <li>Replacement dispatch inside 4 weeks on accepted claims</li>
+        </ul>
+      </div>
+
+      <div class="condition-block">
+        <h3 class="condition-block__title">ISO Traceability</h3>
+        <p>
+          Every warranted install is traceable through ASI's ISO 9001 quality system. Batch
+          number, install location, installer ID, vehicle identification, and customer details
+          are captured in controlled records. This matters on coach, marine, and structural
+          jobs where independent warranty evidence can be the difference between a paid claim
+          and a denied one.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__brand">
+            <span class="nav__brand-mark" aria-hidden="true"></span>
+            <span>APEAX</span>
+          </div>
+          <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
+          <p class="footer__small">
+            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.
+            Australia's exclusive APEAX distributor.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Range</h4>
+          <ul>
+            <li><a href="passenger.html">Passenger</a></li>
+            <li><a href="heavy.html">Heavy</a></li>
+            <li><a href="#">Marine</a></li>
+            <li><a href="#">Structural</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Trade</h4>
+          <ul>
+            <li><a href="trade/apply.html">Apply for Account</a></li>
+            <li><a href="trade/login.html">Trade Login</a></li>
+            <li><a href="quote.html">Request Quote</a></li>
+            <li><a href="warranty.html">Warranty Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:shield@asi-australia.com.au">Contact SHIELD</a></li>
+            <li><a href="#">Terms of Supply</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">ISO Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__strip">
+        <div>© 2026 ASI Distribution Division · ABN [ASI]</div>
+        <div>ISO 9001 · 14001 · 45001 · <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEAX XTREME SERIES · Performance Films for Australia</title>
+  <meta name="description" content="German-engineered performance films for Australian passenger and heavy vehicle applications. Australian exclusive distribution. Trade enquiries welcome.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="APEAX XTREME SERIES">
+  <meta property="og:description" content="German-engineered performance films. Protecting what moves Australia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apeax.com.au">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --apx-void: #05060A;
+      --apx-carbon: #0E1218;
+      --apx-graphite: #1A2130;
+      --apx-bone: #F2F4F7;
+      --apx-mist: #9BA3B3;
+      --apx-xenon: #00E5C8;
+      --apx-flare: #FFB020;
+      --apx-verdigris: #2FD27E;
+      --apx-ember: #FF7A33;
+      --apx-crimson: #FF3D5E;
+      --apx-wire: rgba(255, 255, 255, 0.08);
+      --apx-trace: rgba(0, 229, 200, 0.4);
+
+      --font-display: 'Archivo', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+      --fs-display-xl: clamp(3.5rem, 10vw, 8rem);
+      --fs-display-lg: clamp(2.5rem, 6vw, 5rem);
+      --fs-display-md: clamp(1.75rem, 3.5vw, 3.5rem);
+      --fs-body-lg: 1.125rem;
+      --fs-body-md: 1rem;
+      --fs-body-sm: 0.875rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--apx-void);
+      color: var(--apx-bone);
+      font-family: var(--font-body);
+      font-size: var(--fs-body-md);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(5, 6, 10, 0.6), transparent);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav__brand {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--apx-bone);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav__brand-mark {
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid var(--apx-xenon);
+      transform: rotate(45deg);
+      position: relative;
+    }
+    .nav__brand-mark::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      background: var(--apx-xenon);
+      opacity: 0.4;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      font-size: var(--fs-body-sm);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav__links a {
+      color: var(--apx-mist);
+      transition: color 0.2s ease;
+    }
+    .nav__links a:hover { color: var(--apx-bone); }
+
+    .nav__cta {
+      padding: 10px 20px;
+      border: 1px solid var(--apx-xenon);
+      color: var(--apx-xenon);
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+    .nav__cta:hover {
+      background: var(--apx-xenon);
+      color: var(--apx-void);
+    }
+
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+    }
+
+    /* GATE */
+    .gate {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .gate__divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--apx-wire);
+      transform: translateX(-0.5px);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .gate__divider::before,
+    .gate__divider::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: var(--apx-xenon);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 20px var(--apx-xenon);
+    }
+    .gate__divider::before { top: 50%; transform: translate(-50%, -50%); }
+    .gate__divider::after { display: none; }
+
+    .panel {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 56px 64px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex 0.8s cubic-bezier(0.76, 0, 0.24, 1);
+      background: var(--apx-void);
+    }
+
+    .panel__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.55;
+      transition: opacity 0.8s ease, transform 1.2s ease;
+    }
+    .panel:hover .panel__bg {
+      opacity: 0.8;
+      transform: scale(1.04);
+    }
+
+    .panel--passenger .panel__bg {
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(0, 229, 200, 0.15), transparent 60%),
+        linear-gradient(135deg, #0a1520 0%, #05060A 60%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
+    }
+
+    .panel--heavy .panel__bg {
+      background:
+        radial-gradient(ellipse at 70% 60%, rgba(255, 176, 32, 0.12), transparent 60%),
+        linear-gradient(225deg, #1a1208 0%, #05060A 60%),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid2' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid2)'/></svg>");
+    }
+
+    .panel__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+    }
+
+    .panel__eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--fs-body-sm);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--apx-mist);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .panel__eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--apx-xenon);
+    }
+    .panel--heavy .panel__eyebrow::before {
+      background: var(--apx-flare);
+    }
+
+    .panel__headline {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: var(--fs-display-xl);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--apx-bone);
+      margin-bottom: 16px;
+    }
+
+    .panel__sub {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: var(--fs-display-md);
+      line-height: 1.1;
+      color: var(--apx-mist);
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .panel__desc {
+      font-size: var(--fs-body-lg);
+      line-height: 1.6;
+      color: var(--apx-mist);
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+
+    .panel__enter {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 32px;
+      border: 1px solid var(--apx-xenon);
+      color: var(--apx-xenon);
+      font-size: var(--fs-body-sm);
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(0, 229, 200, 0.05);
+    }
+    .panel__enter:hover {
+      background: var(--apx-xenon);
+      color: var(--apx-void);
+      transform: translateX(8px);
+    }
+    .panel--heavy .panel__enter {
+      border-color: var(--apx-flare);
+      color: var(--apx-flare);
+      background: rgba(255, 176, 32, 0.05);
+    }
+    .panel--heavy .panel__enter:hover {
+      background: var(--apx-flare);
+      color: var(--apx-void);
+    }
+
+    .panel__arrow {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .panel__meta {
+      position: absolute;
+      top: 120px;
+      right: 56px;
+      z-index: 1;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--apx-mist);
+      letter-spacing: 0.1em;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+    .panel__meta span {
+      display: block;
+      color: var(--apx-bone);
+      font-size: 0.7rem;
+      opacity: 0.5;
+    }
+
+    /* FOOTER STRIP */
+    .strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--apx-mist);
+      border-top: 1px solid var(--apx-wire);
+      background: rgba(5, 6, 10, 0.75);
+      backdrop-filter: blur(6px);
+    }
+    .strip__accent { color: var(--apx-xenon); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .gate {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+      .gate__divider {
+        top: 50%;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        transform: translateY(-0.5px);
+      }
+      .panel {
+        padding: 80px 32px 48px;
+        justify-content: flex-end;
+      }
+      .panel__meta { display: none; }
+      .strip {
+        padding: 16px 32px;
+        font-size: 0.65rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .panel__headline { font-size: 3.5rem; }
+      .panel__sub { font-size: 1.5rem; }
+      .panel__desc { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="passenger.html">Passenger</a>
+      <a href="heavy.html">Heavy</a>
+      <a href="warranty.html">Warranty</a>
+      <a href="quote.html">Quote</a>
+      <a href="trade/login.html" class="nav__cta">Trade Login</a>
+    </div>
+  </nav>
+
+  <main class="gate">
+    <a href="passenger.html" class="panel panel--passenger">
+      <div class="panel__bg" aria-hidden="true"></div>
+      <div class="panel__meta">
+        01 / PASSENGER<br>
+        <span>Light Vehicle Applications</span>
+      </div>
+      <div class="panel__inner">
+        <p class="panel__eyebrow">XTREME Series · Light Vehicle</p>
+        <h1 class="panel__headline">Passenger.</h1>
+        <p class="panel__sub">Prestige · Tesla · Rideshare</p>
+        <p class="panel__desc">
+          Optical protection engineered for the windscreen that earns its keep.
+          Self-healing polyurethane, hydrophobic surface chemistry, ADR-compliant tint where allowed.
+        </p>
+        <span class="panel__enter">
+          Enter Passenger
+          <span class="panel__arrow">→</span>
+        </span>
+      </div>
+    </a>
+
+    <a href="heavy.html" class="panel panel--heavy">
+      <div class="panel__bg" aria-hidden="true"></div>
+      <div class="panel__meta">
+        02 / HEAVY<br>
+        <span>Coach · Bus · Marine · Structural</span>
+      </div>
+      <div class="panel__inner">
+        <p class="panel__eyebrow">XTREME Series · Heavy Vehicle</p>
+        <h1 class="panel__headline">Heavy.</h1>
+        <p class="panel__sub">Coach · Bus · Marine · Structural</p>
+        <p class="panel__desc">
+          The films that keep the fleet in service and the schedule honest.
+          German-engineered for Australian mass-transit duty. 99% UV block. 10-year structural warranty.
+        </p>
+        <span class="panel__enter">
+          Enter Heavy
+          <span class="panel__arrow">→</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="gate__divider" aria-hidden="true"></div>
+
+    <div class="strip">
+      <div>Protecting what <span class="strip__accent">moves</span> Australia</div>
+      <div>Distributed by ASI · <span class="strip__accent">apeax.com.au</span></div>
+    </div>
+  </main>
+</body>
+</html>

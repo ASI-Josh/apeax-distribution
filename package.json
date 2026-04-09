@@ -1,0 +1,22 @@
+{
+  "name": "apeax-distribution",
+  "version": "1.0.0",
+  "description": "APEAX Distribution Portal — online sales point and trade installer ordering for APEAX XTREME Series films. Australian exclusive distribution by ASI Australia.",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "preview": "npx serve public",
+    "dev": "netlify dev",
+    "check": "node -e \"console.log('Static site, no build step needed. Preview with npm run preview.')\""
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ASI-Josh/apeax-distribution.git"
+  },
+  "author": "ASI Australia",
+  "license": "UNLICENSED"
+}

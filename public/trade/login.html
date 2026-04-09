@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade Login · APEAX Distribution</title>
+  <meta name="description" content="Login to your APEAX trade installer account. Direct ordering and trade pricing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../_shared.css">
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .login-wrap {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .login-visual {
+      position: relative;
+      overflow: hidden;
+      padding: 180px var(--sp-8) var(--sp-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .login-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(0, 229, 200, 0.18), transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 176, 32, 0.08), transparent 55%),
+        linear-gradient(135deg, #0a1520 0%, #05060A 60%);
+      z-index: 0;
+    }
+    .login-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='g' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23g)'/></svg>");
+      z-index: 0;
+    }
+    .login-visual__inner {
+      position: relative;
+      z-index: 1;
+    }
+    .login-visual__headline {
+      max-width: 14ch;
+      margin-bottom: var(--sp-5);
+    }
+    .login-visual__sub {
+      max-width: 42ch;
+      color: var(--apx-mist);
+      font-size: var(--fs-body-lg);
+      line-height: 1.6;
+    }
+
+    .login-visual__stats {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: var(--sp-7);
+      flex-wrap: wrap;
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--apx-wire);
+    }
+    .lvstat__val {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 2.25rem;
+      color: var(--apx-xenon);
+      line-height: 1;
+    }
+    .lvstat__lbl {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-mist);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: var(--sp-2);
+    }
+
+    .login-panel {
+      padding: 180px var(--sp-8) var(--sp-8);
+      background: var(--apx-carbon);
+      border-left: 1px solid var(--apx-wire);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .login-card {
+      max-width: 440px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .login-card__eyebrow {
+      margin-bottom: var(--sp-4);
+    }
+    .login-card__title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: var(--sp-3);
+    }
+    .login-card__sub {
+      color: var(--apx-mist);
+      margin-bottom: var(--sp-7);
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: var(--sp-5);
+    }
+    .field__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .field__input {
+      background: var(--apx-void);
+      border: 1px solid var(--apx-wire-strong);
+      border-radius: var(--rad-md);
+      padding: 16px 18px;
+      color: var(--apx-bone);
+      font-family: var(--font-body);
+      font-size: var(--fs-body-md);
+      transition: border-color 0.2s;
+    }
+    .field__input:focus {
+      outline: none;
+      border-color: var(--apx-xenon);
+    }
+
+    .login-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--sp-6);
+      font-size: var(--fs-body-sm);
+    }
+    .login-row label {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      color: var(--apx-mist);
+      cursor: pointer;
+    }
+    .login-row label input {
+      accent-color: var(--apx-xenon);
+    }
+    .login-row a {
+      color: var(--apx-xenon);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .login-submit {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .login-divider {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin: var(--sp-7) 0;
+      color: var(--apx-ash);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .login-divider::before,
+    .login-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--apx-wire);
+    }
+
+    .login-alt {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+    }
+    .login-alt a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp-5);
+      border: 1px solid var(--apx-wire-strong);
+      border-radius: var(--rad-md);
+      color: var(--apx-bone);
+      font-size: var(--fs-body-sm);
+      transition: all 0.2s;
+    }
+    .login-alt a:hover {
+      border-color: var(--apx-xenon);
+      background: var(--apx-graphite);
+    }
+    .login-alt a span.arrow {
+      color: var(--apx-xenon);
+      font-family: var(--font-mono);
+    }
+
+    .login-footer {
+      margin-top: var(--sp-8);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--apx-wire);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-ash);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 900px) {
+      .login-wrap {
+        grid-template-columns: 1fr;
+      }
+      .login-visual {
+        padding: 140px var(--gutter) var(--sp-7);
+        min-height: auto;
+      }
+      .login-panel {
+        padding: var(--sp-8) var(--gutter) var(--sp-9);
+        border-left: none;
+        border-top: 1px solid var(--apx-wire);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="../passenger.html">Passenger</a>
+      <a href="../heavy.html">Heavy</a>
+      <a href="../quote.html">Quote</a>
+      <a href="login.html" class="nav__cta is-active">Trade Login</a>
+    </div>
+  </nav>
+
+  <main class="login-wrap">
+
+    <div class="login-visual">
+      <div class="login-visual__inner">
+        <p class="eyebrow">Trade Portal Access</p>
+        <h1 class="h-lg login-visual__headline">Sign in. Order direct.</h1>
+        <p class="login-visual__sub">
+          Trade pricing, landed cost, live stock, and warranty registration. Vetted Australian
+          installers only. No exclusivity lock-in, no middlemen, no guesswork.
+        </p>
+      </div>
+      <div class="login-visual__stats">
+        <div>
+          <div class="lvstat__val">48hr</div>
+          <div class="lvstat__lbl">Quote SLA</div>
+        </div>
+        <div>
+          <div class="lvstat__val">10yr</div>
+          <div class="lvstat__lbl">Warranty</div>
+        </div>
+        <div>
+          <div class="lvstat__val">ISO</div>
+          <div class="lvstat__lbl">9001 · 14001 · 45001</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-panel">
+      <div class="login-card">
+        <p class="eyebrow login-card__eyebrow">Trade Login</p>
+        <h2 class="login-card__title">Installer Access</h2>
+        <p class="login-card__sub">Enter your trade credentials. Sessions expire after 8 hours for security.</p>
+
+        <form id="apxLoginForm" novalidate>
+          <div class="field">
+            <label class="field__label" for="email">Trade Email</label>
+            <input class="field__input" type="email" id="email" name="email" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label class="field__label" for="password">Password</label>
+            <input class="field__input" type="password" id="password" name="password" autocomplete="current-password" required>
+          </div>
+
+          <div class="login-row">
+            <label>
+              <input type="checkbox" name="remember"> Remember this device
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn--primary login-submit">
+            Sign In to Trade Portal
+            <span class="btn__arrow">→</span>
+          </button>
+        </form>
+
+        <div class="login-divider">or</div>
+
+        <div class="login-alt">
+          <a href="apply.html">
+            <span>Apply for a Trade Account</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="../quote.html">
+            <span>Request a Quote Without an Account</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="login-footer">
+          Protected by ASI Distribution Division<br>
+          ISO 9001 Information Security Controls
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    /* ----------------------------------------------------------------------
+       Trade Login · POST /api/trade-login
+       Exchanges email + password for HS256 JWT (7-day expiry) from SHIELD.
+       Token stored in sessionStorage; dashboard forwards it as Bearer.
+       "Remember device" swaps to localStorage so the token survives restart.
+       ---------------------------------------------------------------------- */
+    (function () {
+      const form = document.getElementById('apxLoginForm');
+      if (!form) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      const defaultBtnHtml = btn.innerHTML;
+
+      function showError(message) {
+        let banner = document.getElementById('apxLoginBanner');
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'apxLoginBanner';
+          banner.style.cssText =
+            'margin: 14px 0 0; padding: 12px 16px; border-radius: 10px; ' +
+            'font-size: 0.8rem; line-height: 1.45; border: 1px solid ' +
+            'rgba(255, 176, 32, 0.35); background: rgba(255, 176, 32, 0.08); ' +
+            'color: #FFD98A;';
+          const loginRow = form.querySelector('.login-row');
+          if (loginRow && loginRow.parentNode) {
+            loginRow.parentNode.insertBefore(banner, loginRow);
+          } else {
+            form.appendChild(banner);
+          }
+        }
+        banner.textContent = message;
+      }
+
+      function clearError() {
+        const banner = document.getElementById('apxLoginBanner');
+        if (banner) banner.remove();
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+        clearError();
+
+        const fd = new FormData(form);
+        const payload = {
+          email: (fd.get('email') || '').toString().trim(),
+          password: (fd.get('password') || '').toString()
+        };
+        const remember = fd.get('remember') === 'on' || !!form.querySelector('input[name="remember"]:checked');
+
+        btn.disabled = true;
+        btn.innerHTML = 'Authenticating...';
+
+        try {
+          const res = await fetch('/api/trade-login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json().catch(function () { return {}; });
+
+          if (!res.ok || !data.token) {
+            throw new Error(data.message || data.error || 'Invalid credentials');
+          }
+
+          const session = {
+            token: data.token,
+            expiresAt: data.expiresAt || null,
+            tradeAccount: data.tradeAccount || null,
+            issuedAt: new Date().toISOString()
+          };
+
+          try {
+            if (remember) {
+              localStorage.setItem('apx_trade_session', JSON.stringify(session));
+              sessionStorage.removeItem('apx_trade_session');
+            } else {
+              sessionStorage.setItem('apx_trade_session', JSON.stringify(session));
+              localStorage.removeItem('apx_trade_session');
+            }
+          } catch (storageErr) {
+            console.warn('[trade-login] storage unavailable, holding in memory only', storageErr);
+            window.__apxSession = session;
+          }
+
+          btn.innerHTML = 'Welcome back \u2713';
+          window.location.href = 'dashboard.html';
+        } catch (err) {
+          console.error('[trade-login]', err);
+          showError(err.message || 'Could not sign in. Please try again.');
+          btn.disabled = false;
+          btn.innerHTML = defaultBtnHtml;
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

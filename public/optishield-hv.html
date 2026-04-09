@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XTREME OptiShield · Heavy Vehicle · APEAX</title>
+  <meta name="description" content="XTREME OptiShield. The flagship heavy vehicle glass protection film. German-engineered for Australian mass-transit duty.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .product-hero {
+      min-height: 90vh;
+      padding: 160px var(--gutter) var(--sp-9);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .product-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% 40%, rgba(255, 176, 32, 0.2), transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 122, 51, 0.08), transparent 60%),
+        linear-gradient(135deg, #1a1208 0%, #05060A 60%);
+      z-index: 0;
+    }
+    .product-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='g' width='80' height='80' patternUnits='userSpaceOnUse'><path d='M 80 0 L 0 0 0 80' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23g)'/></svg>");
+      z-index: 0;
+    }
+    .product-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--container);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--sp-9);
+      align-items: start;
+    }
+    .product-hero__left { max-width: 640px; }
+    .product-sku {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-ash);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-4);
+    }
+    .product-name {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--sp-4);
+    }
+    .product-tagline {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 2vw, 1.75rem);
+      color: var(--apx-flare);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--sp-6);
+      font-weight: 400;
+    }
+    .product-desc {
+      font-size: var(--fs-body-lg);
+      line-height: 1.6;
+      color: var(--apx-mist);
+      margin-bottom: var(--sp-7);
+      max-width: 58ch;
+    }
+
+    .price-panel {
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire-strong);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-7);
+      position: sticky;
+      top: 100px;
+    }
+    .price-panel__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-ash);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: var(--sp-3);
+    }
+    .price-panel__rrp {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--apx-bone);
+      line-height: 1;
+      margin-bottom: var(--sp-2);
+    }
+    .price-panel__unit {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-mist);
+      margin-bottom: var(--sp-6);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .price-panel__trade {
+      background: rgba(255, 176, 32, 0.05);
+      border: 1px dashed var(--apx-trace-warm);
+      border-radius: var(--rad-md);
+      padding: var(--sp-4);
+      margin-bottom: var(--sp-6);
+      font-size: var(--fs-body-sm);
+      color: var(--apx-flare);
+      line-height: 1.5;
+    }
+    .price-panel__trade strong { color: var(--apx-bone); font-weight: 600; }
+    .price-panel__ctas { display: flex; flex-direction: column; gap: var(--sp-3); }
+    .price-panel__cta {
+      width: 100%;
+      justify-content: center;
+    }
+    .price-panel__meta {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--apx-wire);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-mist);
+      line-height: 1.8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .price-panel__meta div { display: flex; justify-content: space-between; }
+
+    .specs {
+      padding-top: var(--sp-10);
+      padding-bottom: var(--sp-9);
+    }
+    .specs__grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--sp-9);
+      align-items: start;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .spec-table tr {
+      border-bottom: 1px solid var(--apx-wire);
+    }
+    .spec-table td {
+      padding: var(--sp-5) 0;
+      vertical-align: top;
+    }
+    .spec-table td:first-child {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--apx-mist);
+      width: 240px;
+      padding-right: var(--sp-6);
+    }
+    .spec-table td:last-child {
+      color: var(--apx-bone);
+      font-size: var(--fs-body-md);
+      line-height: 1.55;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--apx-wire);
+      border-top: 1px solid var(--apx-wire);
+      border-bottom: 1px solid var(--apx-wire);
+      margin: var(--sp-8) 0;
+    }
+    .feature {
+      background: var(--apx-void);
+      padding: var(--sp-7);
+    }
+    .feature__icon {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--apx-flare);
+      border-radius: var(--rad-sm);
+      margin-bottom: var(--sp-5);
+      position: relative;
+    }
+    .feature__icon::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      background: var(--apx-flare);
+      opacity: 0.3;
+    }
+    .feature__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--sp-3);
+    }
+    .feature__desc {
+      color: var(--apx-mist);
+      font-size: var(--fs-body-sm);
+      line-height: 1.6;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 100px;
+      left: var(--gutter);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      z-index: 2;
+    }
+    .back-link:hover { color: var(--apx-flare); }
+
+    @media (max-width: 900px) {
+      .product-hero__inner { grid-template-columns: 1fr; }
+      .specs__grid { grid-template-columns: 1fr; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .price-panel { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="passenger.html">Passenger</a>
+      <a href="heavy.html" class="is-active">Heavy</a>
+      <a href="#warranty">Warranty</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="nav__cta">Trade Login</a>
+    </div>
+  </nav>
+
+  <a href="heavy.html" class="back-link">← Back to Heavy Range</a>
+
+  <header class="product-hero">
+    <div class="product-hero__inner">
+
+      <div class="product-hero__left">
+        <div class="product-sku">APX-HV-OPTISHIELD-XT · Heavy Vehicle</div>
+        <h1 class="h-xl product-name">XTREME<br>OptiShield.</h1>
+        <p class="product-tagline">Hydrophobic. Particle-phobic. RF-safe. Refreshable.</p>
+        <p class="product-desc">
+          The flagship of the XTREME Heavy range. An externally applied windscreen and
+          large-format glazing film engineered for the thermal, mechanical, and UV reality
+          of Australian mass-transit duty. German-engineered core chemistry, Australian-proven
+          field performance, backed by a 10-year structural warranty.
+        </p>
+
+        <div style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
+          <a href="#specs" class="btn btn--warm">
+            View Full Spec Sheet
+            <span class="btn__arrow">↓</span>
+          </a>
+          <a href="#quote" class="btn btn--ghost">
+            Download PDS
+            <span class="btn__arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="price-panel">
+        <div class="price-panel__label">Public RRP · Per Roll</div>
+        <div class="price-panel__rrp">$1,490<span style="font-size: 0.4em; color: var(--apx-mist);"> inc GST</span></div>
+        <div class="price-panel__unit">40" × 100ft roll · 30.97m²</div>
+
+        <div class="price-panel__trade">
+          <strong>Trade installers:</strong> log in to reveal your discount band.
+          Volume pricing active from 5+ rolls. Fleet pricing available for 10+ coach orders.
+        </div>
+
+        <div class="price-panel__ctas">
+          <a href="#" class="btn btn--warm price-panel__cta">
+            Trade Login
+            <span class="btn__arrow">→</span>
+          </a>
+          <a href="#" class="btn btn--ghost price-panel__cta">
+            Request Quote
+            <span class="btn__arrow">→</span>
+          </a>
+        </div>
+
+        <div class="price-panel__meta">
+          <div><span>SKU</span><span class="xenon">APX-HV-OPT-XT</span></div>
+          <div><span>Lead Time</span><span>3-10 days</span></div>
+          <div><span>Warranty</span><span>10 years</span></div>
+          <div><span>Origin</span><span>USA (DE core)</span></div>
+        </div>
+      </aside>
+
+    </div>
+  </header>
+
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs__grid">
+        <div>
+          <p class="eyebrow eyebrow--heavy" style="display: inline-flex;">Technical Specification</p>
+          <h2 class="h-md">Every number you'll be asked about.</h2>
+          <p class="mist" style="margin-top: var(--sp-5); font-size: var(--fs-body-md); max-width: 40ch;">
+            Pulled directly from the APEAX Heavy Vehicle Product Data Sheet.
+            What you install is what the spec sheet says.
+          </p>
+        </div>
+
+        <table class="spec-table">
+          <tr>
+            <td>Construction</td>
+            <td>
+              UV-stabilised optical PET core, clear acrylic adhesive, self-healing aliphatic
+              polyurethane hardcoat. Multi-layer sacrificial architecture.
+            </td>
+          </tr>
+          <tr>
+            <td>Application</td>
+            <td>External windscreen and side glazing, heavy vehicle and large-format glass</td>
+          </tr>
+          <tr>
+            <td>Roll Size</td>
+            <td>40" × 100ft (30.97 m² per roll)</td>
+          </tr>
+          <tr>
+            <td>UV Rejection</td>
+            <td>99% of harmful rays blocked across full warranty window</td>
+          </tr>
+          <tr>
+            <td>Surface Chemistry</td>
+            <td>Hydrophobic + particle-phobic. Water and fine dust sheet-off</td>
+          </tr>
+          <tr>
+            <td>Self-Healing</td>
+            <td>Heat-activated aliphatic polyurethane hardcoat recovers from light scratches and swirls</td>
+          </tr>
+          <tr>
+            <td>Signal Performance</td>
+            <td>Non-metallic, RF-safe, GPS/4G/5G compatible, does not interfere with onboard telematics</td>
+          </tr>
+          <tr>
+            <td>Compliance</td>
+            <td>UN/ECE R43 glazing safety compliant. ADR compatible where fitted per OEM guidance</td>
+          </tr>
+          <tr>
+            <td>Warranty</td>
+            <td>10 years against delamination, adhesive failure, optical degradation, and UV chalking</td>
+          </tr>
+          <tr>
+            <td>Refreshable</td>
+            <td>Designed for scheduled replacement at warranty expiry without substrate damage</td>
+          </tr>
+          <tr>
+            <td>Lifecycle Cost</td>
+            <td>Up to 60% reduction vs glass replacement over 10-year fleet horizon</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature__icon" aria-hidden="true"></div>
+          <h3 class="feature__title">Windscreen-Grade Optics</h3>
+          <p class="feature__desc">
+            Low haze, minimal optical distortion, driver-tested for long-haul visibility
+            across day and night conditions.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon" aria-hidden="true"></div>
+          <h3 class="feature__title">Refreshable Architecture</h3>
+          <p class="feature__desc">
+            Clean removal at end of warranty. Substrate is preserved. The coach stays in
+            service while the film is renewed.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon" aria-hidden="true"></div>
+          <h3 class="feature__title">Fleet Economics</h3>
+          <p class="feature__desc">
+            Standard coach module baked in. Waste allowances pre-calculated. Fleet pricing
+            from 10+ coaches. ISO-traced from roll to route.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" style="padding-top: var(--sp-8);">
+    <div class="container" style="text-align: center;">
+      <p class="eyebrow eyebrow--heavy" style="justify-content: center;">Next Step</p>
+      <h2 class="h-lg" style="max-width: 22ch; margin: 0 auto var(--sp-5);">
+        Get the real number, fast.
+      </h2>
+      <p class="lead" style="margin: 0 auto var(--sp-7);">
+        Tell us the fleet size, the application, and the timeframe. SHIELD will come back
+        inside 48 hours with a validated quote, stock position, and honest lead time.
+      </p>
+      <div style="display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap;">
+        <a href="#" class="btn btn--warm">
+          Request Fleet Quote
+          <span class="btn__arrow">→</span>
+        </a>
+        <a href="#" class="btn btn--ghost">
+          Apply for Trade Account
+          <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__brand">
+            <span class="nav__brand-mark" aria-hidden="true"></span>
+            <span>APEAX</span>
+          </div>
+          <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
+          <p class="footer__small">
+            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.
+            Australia's exclusive APEAX distributor.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Range</h4>
+          <ul>
+            <li><a href="passenger.html">Passenger</a></li>
+            <li><a href="heavy.html">Heavy</a></li>
+            <li><a href="#">Marine</a></li>
+            <li><a href="#">Structural</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Trade</h4>
+          <ul>
+            <li><a href="#">Apply for Account</a></li>
+            <li><a href="#">Trade Login</a></li>
+            <li><a href="#">Direct Ordering</a></li>
+            <li><a href="#">Warranty Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Contact SHIELD</a></li>
+            <li><a href="#">Terms of Supply</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">ISO Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__strip">
+        <div>© 2026 ASI Distribution Division · ABN [ASI]</div>
+        <div>ISO 9001 · 14001 · 45001 · <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

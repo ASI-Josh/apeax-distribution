@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Trade Quote · APEAX XTREME Series</title>
+  <meta name="description" content="Request a trade quote for APEAX XTREME Series performance films. Direct from Australia's exclusive APEAX distributor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+  <style>
+    .quote-hero {
+      padding: 180px var(--gutter) var(--sp-8);
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0, 229, 200, 0.12), transparent 55%),
+        linear-gradient(180deg, #0a1520 0%, #05060A 60%);
+      z-index: 0;
+    }
+    .quote-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--container);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quote-hero__headline {
+      max-width: 22ch;
+      margin: 0 auto var(--sp-5);
+    }
+    .quote-hero__lead {
+      margin: 0 auto;
+    }
+    .back-link {
+      position: absolute;
+      top: 120px;
+      left: var(--gutter);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      z-index: 2;
+    }
+    .back-link:hover { color: var(--apx-xenon); }
+
+    .quote-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 var(--gutter) var(--sp-9);
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--sp-8);
+      align-items: start;
+    }
+
+    .quote-form {
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-8);
+    }
+
+    .form__section {
+      margin-bottom: var(--sp-8);
+    }
+    .form__section:last-child { margin-bottom: 0; }
+    .form__section-title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.14em;
+      color: var(--apx-xenon);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-5);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--apx-wire);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .form__section-title::before {
+      content: counter(section-count, decimal-leading-zero);
+      color: var(--apx-mist);
+    }
+    .quote-form { counter-reset: section-count; }
+    .form__section { counter-increment: section-count; }
+
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-5);
+      margin-bottom: var(--sp-5);
+    }
+    .form__row--full { grid-template-columns: 1fr; }
+    .form__row:last-child { margin-bottom: 0; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+    .field__label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--apx-mist);
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .field__label .req {
+      color: var(--apx-flare);
+      margin-left: var(--sp-1);
+    }
+    .field__input,
+    .field__select,
+    .field__textarea {
+      background: var(--apx-void);
+      border: 1px solid var(--apx-wire-strong);
+      border-radius: var(--rad-md);
+      padding: 14px 16px;
+      color: var(--apx-bone);
+      font-family: var(--font-body);
+      font-size: var(--fs-body-md);
+      transition: border-color 0.2s var(--ease-crisp), background 0.2s var(--ease-crisp);
+    }
+    .field__input:focus,
+    .field__select:focus,
+    .field__textarea:focus {
+      outline: none;
+      border-color: var(--apx-xenon);
+      background: var(--apx-carbon);
+    }
+    .field__textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: var(--font-body);
+    }
+    .field__hint {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-ash);
+      letter-spacing: 0.08em;
+      margin-top: var(--sp-2);
+      text-transform: uppercase;
+    }
+
+    .field__checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-3);
+    }
+    .checkbox-tile {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-3);
+      padding: var(--sp-4);
+      background: var(--apx-void);
+      border: 1px solid var(--apx-wire-strong);
+      border-radius: var(--rad-md);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-crisp);
+    }
+    .checkbox-tile:hover {
+      border-color: var(--apx-trace);
+      background: var(--apx-graphite);
+    }
+    .checkbox-tile input {
+      margin-top: 2px;
+      accent-color: var(--apx-xenon);
+    }
+    .checkbox-tile__label {
+      font-size: var(--fs-body-sm);
+      color: var(--apx-bone);
+      font-weight: 500;
+    }
+    .checkbox-tile__sub {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--apx-mist);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .form__actions {
+      margin-top: var(--sp-8);
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--apx-wire);
+      display: flex;
+      gap: var(--sp-4);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .form__disclaimer {
+      flex: 1;
+      min-width: 280px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--apx-ash);
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .quote-aside {
+      position: sticky;
+      top: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-5);
+    }
+    .aside-card {
+      background: var(--apx-carbon);
+      border: 1px solid var(--apx-wire);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-6);
+    }
+    .aside-card h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--sp-4);
+      color: var(--apx-bone);
+    }
+    .aside-card p,
+    .aside-card li {
+      font-size: var(--fs-body-sm);
+      color: var(--apx-mist);
+      line-height: 1.6;
+    }
+    .aside-card ul {
+      list-style: none;
+    }
+    .aside-card li {
+      padding: var(--sp-2) 0;
+      padding-left: var(--sp-5);
+      position: relative;
+    }
+    .aside-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      top: var(--sp-2);
+      color: var(--apx-xenon);
+      font-family: var(--font-mono);
+    }
+    .aside-card--trade {
+      background: linear-gradient(135deg, rgba(0, 229, 200, 0.06), rgba(0, 229, 200, 0.01));
+      border-color: var(--apx-trace);
+    }
+    .aside-card--trade h4 { color: var(--apx-xenon); }
+
+    .sla-line {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--sp-3) 0;
+      border-bottom: 1px solid var(--apx-wire);
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .sla-line:last-child { border-bottom: none; }
+    .sla-line__label { color: var(--apx-mist); }
+    .sla-line__value { color: var(--apx-bone); }
+
+    @media (max-width: 980px) {
+      .quote-shell {
+        grid-template-columns: 1fr;
+      }
+      .quote-aside {
+        position: static;
+      }
+      .form__row {
+        grid-template-columns: 1fr;
+      }
+      .field__checkbox-group {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__brand">
+      <span class="nav__brand-mark" aria-hidden="true"></span>
+      <span>APEAX</span>
+    </a>
+    <div class="nav__links">
+      <a href="passenger.html">Passenger</a>
+      <a href="heavy.html">Heavy</a>
+      <a href="quote.html" class="is-active">Quote</a>
+      <a href="trade/login.html" class="nav__cta">Trade Login</a>
+    </div>
+  </nav>
+
+  <a href="index.html" class="back-link">← Back to Gate</a>
+
+  <header class="quote-hero">
+    <div class="quote-hero__inner">
+      <p class="eyebrow" style="justify-content: center;">Trade Enquiries · No Commitment</p>
+      <h1 class="h-lg quote-hero__headline">Tell us what you need. We quote in under 48 hours.</h1>
+      <p class="lead quote-hero__lead">
+        This form goes straight to SHIELD, APEAX Distribution's trade desk. Give us the
+        details, get trade pricing, landed cost, and lead time. No account required for a quote.
+      </p>
+    </div>
+  </header>
+
+  <div class="quote-shell">
+
+    <form class="quote-form" id="apxQuoteForm" novalidate>
+
+      <div class="form__section">
+        <div class="form__section-title">Your Business</div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="company">Business Name<span class="req">*</span></label>
+            <input class="field__input" type="text" id="company" name="company" required autocomplete="organization">
+          </div>
+          <div class="field">
+            <label class="field__label" for="abn">ABN<span class="req">*</span></label>
+            <input class="field__input" type="text" id="abn" name="abn" required pattern="[0-9 ]{11,14}" placeholder="11 111 111 111">
+            <span class="field__hint">We verify on the ABR before quoting</span>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="contactName">Your Name<span class="req">*</span></label>
+            <input class="field__input" type="text" id="contactName" name="contactName" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="role">Role</label>
+            <input class="field__input" type="text" id="role" name="role" placeholder="Owner, Workshop Manager, Installer" autocomplete="organization-title">
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="email">Email<span class="req">*</span></label>
+            <input class="field__input" type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label class="field__label" for="phone">Phone<span class="req">*</span></label>
+            <input class="field__input" type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="04XX XXX XXX">
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="state">State<span class="req">*</span></label>
+            <select class="field__select" id="state" name="state" required>
+              <option value="">Select state</option>
+              <option value="VIC">Victoria</option>
+              <option value="NSW">New South Wales</option>
+              <option value="QLD">Queensland</option>
+              <option value="SA">South Australia</option>
+              <option value="WA">Western Australia</option>
+              <option value="TAS">Tasmania</option>
+              <option value="ACT">Australian Capital Territory</option>
+              <option value="NT">Northern Territory</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="postcode">Postcode<span class="req">*</span></label>
+            <input class="field__input" type="text" id="postcode" name="postcode" required pattern="[0-9]{4}" maxlength="4">
+          </div>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form__section-title">Application</div>
+
+        <div class="form__row form__row--full">
+          <div class="field">
+            <label class="field__label">Category<span class="req">*</span></label>
+            <div class="field__checkbox-group">
+              <label class="checkbox-tile">
+                <input type="radio" name="category" value="passenger" required>
+                <span>
+                  <span class="checkbox-tile__label">Passenger</span>
+                  <span class="checkbox-tile__sub">Prestige · Tesla · Rideshare</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="radio" name="category" value="heavy" required>
+                <span>
+                  <span class="checkbox-tile__label">Heavy</span>
+                  <span class="checkbox-tile__sub">Coach · Bus · Marine · Structural</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row form__row--full">
+          <div class="field">
+            <label class="field__label">Films of Interest</label>
+            <div class="field__checkbox-group">
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="optishield-hv">
+                <span>
+                  <span class="checkbox-tile__label">XTREME OptiShield HV</span>
+                  <span class="checkbox-tile__sub">Heavy vehicle glass protection</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="optishield-lv">
+                <span>
+                  <span class="checkbox-tile__label">OptiShield LV</span>
+                  <span class="checkbox-tile__sub">Passenger glass protection</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="gloss60-ppf">
+                <span>
+                  <span class="checkbox-tile__label">Gloss 60 PPF</span>
+                  <span class="checkbox-tile__sub">Self-healing paint protection</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="paintshield">
+                <span>
+                  <span class="checkbox-tile__label">PaintShield</span>
+                  <span class="checkbox-tile__sub">High-wear zone PPF</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="radshield">
+                <span>
+                  <span class="checkbox-tile__label">RadShield</span>
+                  <span class="checkbox-tile__sub">Solar / heat control</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="clearshield">
+                <span>
+                  <span class="checkbox-tile__label">ClearShield</span>
+                  <span class="checkbox-tile__sub">Clear structural film</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="grafshield">
+                <span>
+                  <span class="checkbox-tile__label">GrafShield</span>
+                  <span class="checkbox-tile__sub">Anti-graffiti sacrificial</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="checkbox" name="films" value="unsure">
+                <span>
+                  <span class="checkbox-tile__label">Not Sure Yet</span>
+                  <span class="checkbox-tile__sub">Help me spec the job</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="quantity">Estimated Quantity</label>
+            <input class="field__input" type="text" id="quantity" name="quantity" placeholder="e.g. 4 rolls, 14 panels, 1 coach">
+          </div>
+          <div class="field">
+            <label class="field__label" for="timeframe">Timeframe</label>
+            <select class="field__select" id="timeframe" name="timeframe">
+              <option value="">Select timeframe</option>
+              <option value="urgent">Urgent (under 2 weeks)</option>
+              <option value="4wk">Within 4 weeks</option>
+              <option value="8wk">Within 8 weeks</option>
+              <option value="planning">Planning ahead / no rush</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form__row form__row--full">
+          <div class="field">
+            <label class="field__label" for="notes">Project Notes</label>
+            <textarea class="field__textarea" id="notes" name="notes" placeholder="Tell us about the job. Vehicle make/model, fleet size, windscreen vs full glazing, anything we should know."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__section">
+        <div class="form__section-title">Exclusivity Disclosure</div>
+        <div class="form__row form__row--full">
+          <div class="field">
+            <label class="field__label">Are you currently under an exclusivity agreement with a competing film brand?<span class="req">*</span></label>
+            <div class="field__checkbox-group">
+              <label class="checkbox-tile">
+                <input type="radio" name="exclusivity" value="no" required>
+                <span>
+                  <span class="checkbox-tile__label">No</span>
+                  <span class="checkbox-tile__sub">Free to distribute APEAX</span>
+                </span>
+              </label>
+              <label class="checkbox-tile">
+                <input type="radio" name="exclusivity" value="yes" required>
+                <span>
+                  <span class="checkbox-tile__label">Yes</span>
+                  <span class="checkbox-tile__sub">Let's talk anyway</span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form__actions">
+        <p class="form__disclaimer">
+          By submitting you consent to SHIELD (ASI Distribution Division) contacting you about
+          this enquiry. We don't spam. We don't share. Your details sit inside our ISO 9001
+          controlled leads register.
+        </p>
+        <button type="submit" class="btn btn--primary">
+          Submit Quote Request
+          <span class="btn__arrow">→</span>
+        </button>
+      </div>
+    </form>
+
+    <aside class="quote-aside">
+
+      <div class="aside-card">
+        <h4>What Happens Next</h4>
+        <div class="sla-line">
+          <span class="sla-line__label">Acknowledgement</span>
+          <span class="sla-line__value">Under 4 hrs</span>
+        </div>
+        <div class="sla-line">
+          <span class="sla-line__label">ABN Check</span>
+          <span class="sla-line__value">Same day</span>
+        </div>
+        <div class="sla-line">
+          <span class="sla-line__label">Full Quote</span>
+          <span class="sla-line__value">Under 48 hrs</span>
+        </div>
+        <div class="sla-line">
+          <span class="sla-line__label">Lead Time</span>
+          <span class="sla-line__value">2 to 6 wks</span>
+        </div>
+      </div>
+
+      <div class="aside-card aside-card--trade">
+        <h4>Want Direct Ordering?</h4>
+        <p style="margin-bottom: var(--sp-4);">
+          Vetted trade installers skip the quote step entirely. Open a trade account and order
+          direct with transparent landed-cost pricing.
+        </p>
+        <a href="trade/apply.html" class="btn btn--outline" style="padding: 12px 20px; font-size: 0.75rem;">
+          Apply for Trade Account
+          <span class="btn__arrow">→</span>
+        </a>
+      </div>
+
+      <div class="aside-card">
+        <h4>Why Trade Chooses APEAX</h4>
+        <ul>
+          <li>Australia's exclusive APEAX distributor</li>
+          <li>No competing brand exclusivity clauses</li>
+          <li>Landed cost transparency</li>
+          <li>ISO 9001 backed paperwork trail</li>
+          <li>Warranty registered on behalf of the installer</li>
+        </ul>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="nav__brand">
+            <span class="nav__brand-mark" aria-hidden="true"></span>
+            <span>APEAX</span>
+          </div>
+          <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
+          <p class="footer__small">
+            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.
+            Australia's exclusive APEAX distributor.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>Range</h4>
+          <ul>
+            <li><a href="passenger.html">Passenger</a></li>
+            <li><a href="heavy.html">Heavy</a></li>
+            <li><a href="#">Marine</a></li>
+            <li><a href="#">Structural</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Trade</h4>
+          <ul>
+            <li><a href="trade/apply.html">Apply for Account</a></li>
+            <li><a href="trade/login.html">Trade Login</a></li>
+            <li><a href="quote.html">Request Quote</a></li>
+            <li><a href="#">Warranty Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="mailto:shield@asi-australia.com.au">Contact SHIELD</a></li>
+            <li><a href="#">Terms of Supply</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">ISO Compliance</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__strip">
+        <div>© 2026 ASI Distribution Division · ABN [ASI]</div>
+        <div>ISO 9001 · 14001 · 45001 · <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ----------------------------------------------------------------------
+       Quote Request · POST /api/quote-request
+       Netlify Function proxies to SHIELD backend at asiportal.live.
+       SHIELD acknowledges under 4 hrs, ABN check same day, full quote 48 hrs.
+       ---------------------------------------------------------------------- */
+    (function () {
+      const form = document.getElementById('apxQuoteForm');
+      if (!form) return;
+
+      const btn = form.querySelector('button[type="submit"]');
+      const defaultBtnHtml = btn.innerHTML;
+
+      function setButtonState(state, text) {
+        btn.disabled = state !== 'idle';
+        switch (state) {
+          case 'submitting':
+            btn.innerHTML = text || 'Lodging with SHIELD...';
+            btn.style.background = '';
+            btn.style.color = '';
+            break;
+          case 'success':
+            btn.innerHTML = text || 'Lodged \u2713';
+            btn.style.background = 'var(--apx-verdigris, var(--apx-xenon))';
+            btn.style.color = 'var(--apx-void)';
+            break;
+          case 'error':
+            btn.innerHTML = text || 'Try again';
+            btn.style.background = 'var(--apx-flare, #FFB020)';
+            btn.style.color = 'var(--apx-void)';
+            btn.disabled = false;
+            break;
+          default:
+            btn.innerHTML = defaultBtnHtml;
+            btn.style.background = '';
+            btn.style.color = '';
+        }
+      }
+
+      function showBanner(kind, message) {
+        let banner = document.getElementById('apxFormBanner');
+        if (!banner) {
+          banner = document.createElement('div');
+          banner.id = 'apxFormBanner';
+          banner.style.cssText =
+            'margin-top: var(--sp-4, 16px); padding: 14px 18px; border-radius: 10px; ' +
+            'font-size: 0.85rem; line-height: 1.45; border: 1px solid;';
+          form.querySelector('.form__actions').appendChild(banner);
+        }
+        if (kind === 'success') {
+          banner.style.background = 'rgba(0, 229, 200, 0.08)';
+          banner.style.borderColor = 'rgba(0, 229, 200, 0.35)';
+          banner.style.color = '#9CFCEA';
+        } else {
+          banner.style.background = 'rgba(255, 176, 32, 0.08)';
+          banner.style.borderColor = 'rgba(255, 176, 32, 0.35)';
+          banner.style.color = '#FFD98A';
+        }
+        banner.textContent = message;
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const fd = new FormData(form);
+        const films = fd.getAll('films');
+
+        const payload = {
+          company: (fd.get('company') || '').toString().trim(),
+          abn: (fd.get('abn') || '').toString().trim(),
+          contactName: (fd.get('contactName') || '').toString().trim(),
+          role: (fd.get('role') || '').toString().trim() || null,
+          email: (fd.get('email') || '').toString().trim(),
+          phone: (fd.get('phone') || '').toString().trim(),
+          state: (fd.get('state') || '').toString(),
+          postcode: (fd.get('postcode') || '').toString(),
+          category: (fd.get('category') || '').toString(),
+          films: films,
+          quantity: (fd.get('quantity') || '').toString().trim() || null,
+          timeframe: (fd.get('timeframe') || '').toString() || null,
+          notes: (fd.get('notes') || '').toString().trim() || null,
+          exclusivity: (fd.get('exclusivity') || '').toString(),
+          source: 'apeax_portal_quote',
+          submittedAt: new Date().toISOString()
+        };
+
+        setButtonState('submitting');
+
+        try {
+          const res = await fetch('/api/quote-request', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json().catch(() => ({}));
+
+          if (!res.ok || data.success === false) {
+            throw new Error(data.message || data.error || 'Could not lodge quote. Please email shield@asi-australia.com.au.');
+          }
+
+          setButtonState('success');
+          showBanner(
+            'success',
+            'Quote lodged with SHIELD. Reference: ' +
+              (data.quoteId || data.reference || 'pending') +
+              '. Acknowledgement email within 4 hours.'
+          );
+          form.querySelectorAll('input, select, textarea').forEach((el) => {
+            if (el.type !== 'submit') el.disabled = true;
+          });
+        } catch (err) {
+          console.error('[quote-request]', err);
+          setButtonState('error');
+          showBanner('error', err.message || 'Could not lodge quote. Please try again or email shield@asi-australia.com.au.');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

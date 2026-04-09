@@ -1,0 +1,109 @@
+# ============================================================================
+# APEAX Distribution Portal · Netlify Configuration
+# ----------------------------------------------------------------------------
+# apeax.com.au / ASI Distribution Division
+# Built by CIPHER, 2026-04-09
+# ============================================================================
+
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+  command = "echo 'Static build, no compilation step'"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ----- Function runtime defaults -----
+[functions]
+  node_bundler = "esbuild"
+  directory = "netlify/functions"
+
+# ----- Friendly API routes -----
+# Public frontend calls /api/apeax/* and Netlify rewrites to Functions.
+# CIPHER keeps the URL shape matching the ASI Portal backend for clarity.
+
+[[redirects]]
+  from = "/api/quote-request"
+  to = "/.netlify/functions/quote-request"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/trade-application"
+  to = "/.netlify/functions/trade-application"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/trade-login"
+  to = "/.netlify/functions/trade-login"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/trade-dashboard"
+  to = "/.netlify/functions/trade-dashboard"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/trade-order"
+  to = "/.netlify/functions/trade-order"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/stock"
+  to = "/.netlify/functions/stock"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
+
+# ----- SPA-style fallback for clean trade URLs -----
+
+[[redirects]]
+  from = "/trade/login"
+  to = "/trade/login.html"
+  status = 200
+
+[[redirects]]
+  from = "/trade/apply"
+  to = "/trade/apply.html"
+  status = 200
+
+[[redirects]]
+  from = "/trade/dashboard"
+  to = "/trade/dashboard.html"
+  status = 200
+
+# ----- Security headers -----
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://asiportal.live; frame-ancestors 'none'"
+
+[[headers]]
+  for = "/_shared.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate"
