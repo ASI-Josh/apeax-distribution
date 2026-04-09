@@ -280,3 +280,99 @@ in a Director briefing, not as an autonomous edit to this file.
 
 The whole point of locking this is so no one re-litigates the brand
 every time a new page is built.
+
+---
+
+## Appendix A — Source archive location and inventory
+
+The source archive of original APEAX artwork lives OUTSIDE this repo at:
+
+```
+C:/Users/jhyde_zzz3b9b/Documents/Claude/Projects/ASI CENTCOM/APEAX Distribution Portal/repo/public/assets/apeax_full/
+```
+
+**Do not copy this folder wholesale into the repo.** It is gitignored
+under the pattern `apeax_full/`. Only web-optimised, curated files
+should land in `public/assets/` following the three-step ritual
+documented in `public/assets/README.md`.
+
+### What's in the archive (as of 2026-04-09)
+
+**Top-level brand + hero files:**
+- `APEAX AUSTRALIA DRAFT.png`
+- `ApeaxWhite.png`, `ApeaxWhite - Copy.png`
+- `apeax australia no background.png`
+- `apeaxausnobg white.png`
+- `apeaxaussurfaceprotection.png`, `..._black.png`
+- `apeax tools image greyscale.png`
+- `porscherender.png`, `porscherender_transparent.png` (landing gate candidate)
+- `truckrender1.png`, `Large Truck Render.png`
+- `Film Layer Graphic.png`, `impact, scratch & hydroparticle rejection layer.png`
+- `X TEMPLATE.png`, `XTREME SERIES Spec.png`
+
+**Per-product folders with renders + Golden X logos + spec tables:**
+
+| Source folder          | Notable files                                                                                                                 |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| `Apeax OptiShield`     | B13 Volvo, B13R, Irizar i8 (front + side), Marcopolo full bus, Tram render, bus rolling, film explosion diagram, boat         |
+| `Apeax Paintshield`    | Angry Corvette, G-Wagon, Moped, Russ Hood application video (mp4), Satin Urus, Range Rover, Porsche paintshield, boat render  |
+| `Apeax RadShield`      | Window tint sample, Xtreme RadShield Gold-X, building skyscraper, bus side, boat                                              |
+| `Apeax ClearShield`    | Golden X ClearShield logo, white + black transparents                                                                         |
+| `Apeax Grafshield`     | Golden X Grafshield logo, white + black transparents                                                                          |
+| `Apeax Xtreme Series`  | Golden X Xtreme Series logo, Green X variant, white series logo (FAMILY brand assets — not a separate product)                |
+| `Packaging Artwork`    | Black Satin Box blank, Box Art Coach, Box Art Highrise, Box Art Luxury Yacht, Packaging Design Aus                            |
+| `Product Display Images` | Banister grafshield, bus diagram of products, due-north products, Porsche xtreme films diagram, semi-truck, shopfront, van |
+
+### Important: XTREME is a family prefix, not a product
+
+"XTREME Series" is the brand family name applied to all five films:
+XTREME OptiShield, XTREME PaintShield, XTREME RadShield,
+XTREME ClearShield, XTREME GrafShield. There is NO sixth standalone
+product called "XTREME Series".
+
+On the deploy-side (`public/assets/products/`) there are **only five
+product folders**, one per film. The `Apeax Xtreme Series` folder in
+the source archive contains shared family-level wordmarks and logos
+which get deployed under `public/assets/brand/` or `public/assets/heroes/`
+depending on use, not into their own product folder.
+
+Each product folder also contains `Product Branding/` (Golden X logo +
+transparent variants), `Product Images/`, and `Spec Tables/` subfolders
+where the per-product spec table PNGs already exist.
+
+### Phase 1 curation recommendations (CVS's read)
+
+When CIPHER starts Phase 1, strong candidates for first-pass page heroes:
+
+- **Landing gate (split passenger/heavy):** `porscherender_transparent.png`
+  on the PASSENGER panel, `busrollingoptishield.png` or `Marcopolo Optishield Render.png`
+  on the HEAVY panel
+- **Passenger hub page:** Porsche PaintShield (`porschepaintshield.png`),
+  G-Wagon, or a Corvette render from PaintShield folder
+- **Heavy hub page:** `B13 Volvo Optishield no logo.png` or
+  `Irizar Front Side Elevation Optishield.png`
+- **OptiShield product page:** `Irizar Front Side Film Illustrated.png`
+  (good for the "film detection" story), `filmmaterialexplosiondiagram.png`
+  for the specs section
+- **Trade login split panel:** `porscherender_transparent.png` as the
+  cinematic left panel
+- **OG share card:** `apeaxaussurfaceprotection_black.png` on dark bg
+
+These are first-pass recommendations only. Final selection goes through
+the three-step ritual in `public/assets/README.md` — Josh briefs CIPHER
+on the page intent, CIPHER proposes files with rationale, Josh approves
+or swaps, then CIPHER copies + compresses + renames into `public/assets/`
+following the naming convention.
+
+### Compression targets before any asset ships
+
+- **Heroes / renders:** WebP @ 1920w @ q80, target <400KB
+- **Product shots:** WebP @ 1600w @ q82, target <300KB
+- **Diagrams:** SVG where possible, otherwise WebP @ 1200w @ q85
+- **Logos:** SVG only, optimise via svgo
+- **Packaging boxes:** WebP @ 1200w @ q82, target <250KB
+- **Product Branding Golden-X logos:** PNG with alpha at 512x512, then
+  convert to WebP for web use
+
+Total asset budget for the full public site: under 15MB, preferably
+under 10MB. First paint target <250KB for the landing gate above-the-fold.

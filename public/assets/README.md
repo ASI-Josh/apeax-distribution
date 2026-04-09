@@ -9,19 +9,23 @@ duplication.
 ```
 public/assets/
 ├── brand/              Logos, wordmarks, brand marks (SVG preferred)
-├── products/
-│   ├── optishield/     OPTISHIELD — passenger + heavy vehicle window film
-│   ├── paintshield/    PAINTSHIELD — paint protection film
-│   ├── radshield/      RADSHIELD — radiant heat rejection film
-│   ├── clearshield/    CLEARSHIELD — anti-scratch clear film
-│   ├── grafshield/     GRAFSHIELD — anti-graffiti sacrificial film
-│   └── xtreme-series/  Shared XTREME series banner assets
+├── products/           One folder per XTREME Series film:
+│   ├── optishield/     XTREME OptiShield — passenger + heavy window film
+│   ├── paintshield/    XTREME PaintShield — paint protection film
+│   ├── radshield/      XTREME RadShield — radiant heat rejection film
+│   ├── clearshield/    XTREME ClearShield — anti-scratch clear film
+│   └── grafshield/     XTREME GrafShield — anti-graffiti sacrificial film
 ├── heroes/             Landing gate, passenger hub, heavy hub, trade panel
 ├── renders/            Cross-page reusable renders (product in context)
 ├── packaging/          Box art for trade dashboard "what you get" panels
 ├── diagrams/           Film layer illustrations, product display diagrams
 └── icons/              Small UI glyphs (SVG)
 ```
+
+**Note:** XTREME Series is the family name that prefixes all five films
+(XTREME OptiShield, XTREME PaintShield, etc.). There is NO separate
+"xtreme-series" product folder — the family identity lives in brand-level
+copy and the wordmark, not in a dedicated folder of assets.
 
 ## Naming convention
 
