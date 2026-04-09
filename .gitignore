@@ -11,3 +11,11 @@ build/
 .idea/
 *.zip
 .~lock.*
+
+# Source archive — NEVER commit. This is the working library of uncompressed
+# product renders, Porsche/Irizar/coach artwork, packaging source files, etc.
+# Anything that ships lives in public/assets/, copied + web-optimised from
+# the archive. See public/assets/README.md for the curation process.
+apeax_full/
+apeax-full/
+_source-archive/
