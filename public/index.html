@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0F18">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
   <title>APEAX XTREME SERIES · Performance Films for Australia</title>
   <meta name="description" content="German-engineered performance films for Australian passenger and heavy vehicle applications. Australian exclusive distribution. Trade enquiries welcome.">
   <meta name="robots" content="index, follow">
@@ -18,18 +23,18 @@
 
   <style>
     :root {
-      --apx-void: #05060A;
-      --apx-carbon: #0E1218;
-      --apx-graphite: #1A2130;
-      --apx-bone: #F2F4F7;
-      --apx-mist: #9BA3B3;
-      --apx-xenon: #00E5C8;
-      --apx-flare: #FFB020;
+      --apx-void: #0B0F18;
+      --apx-carbon: #121821;
+      --apx-graphite: #1E2531;
+      --apx-bone: #FFFFFF;
+      --apx-mist: #B8BFCC;
+      --apx-xenon: #FFFFFF;
+      --apx-flare: #FFFFFF;
       --apx-verdigris: #2FD27E;
       --apx-ember: #FF7A33;
       --apx-crimson: #FF3D5E;
       --apx-wire: rgba(255, 255, 255, 0.08);
-      --apx-trace: rgba(0, 229, 200, 0.4);
+      --apx-trace: rgba(255, 255, 255, 0.4);
 
       --font-display: 'Archivo', system-ui, sans-serif;
       --font-body: 'Inter', system-ui, sans-serif;
@@ -79,7 +84,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(180deg, rgba(5, 6, 10, 0.6), transparent);
+      background: linear-gradient(180deg, rgba(11, 15, 24, 0.6), transparent);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
@@ -97,18 +102,12 @@
     }
 
     .nav__brand-mark {
-      width: 24px;
-      height: 24px;
-      border: 1.5px solid var(--apx-xenon);
-      transform: rotate(45deg);
-      position: relative;
-    }
-    .nav__brand-mark::after {
-      content: '';
-      position: absolute;
-      inset: 4px;
-      background: var(--apx-xenon);
-      opacity: 0.4;
+      display: block;
+      height: 44px;
+      width: auto;
+      max-width: 140px;
+      object-fit: contain;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
     }
 
     .nav__links {
@@ -203,17 +202,23 @@
     }
 
     .panel--passenger .panel__bg {
-      background:
-        radial-gradient(ellipse at 30% 40%, rgba(0, 229, 200, 0.15), transparent 60%),
-        linear-gradient(135deg, #0a1520 0%, #05060A 60%),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
+      background-image:
+        radial-gradient(ellipse at 25% 50%, rgba(0, 0, 0, 0.35), transparent 70%),
+        linear-gradient(to right, rgba(11, 15, 24, 0.82) 0%, rgba(11, 15, 24, 0.3) 55%, transparent 100%),
+        url('assets/heroes/home-gate-passenger.png');
+      background-size: auto, auto, cover;
+      background-position: center, center, 65% center;
+      background-repeat: no-repeat;
     }
 
     .panel--heavy .panel__bg {
-      background:
-        radial-gradient(ellipse at 70% 60%, rgba(255, 176, 32, 0.12), transparent 60%),
-        linear-gradient(225deg, #1a1208 0%, #05060A 60%),
-        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid2' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid2)'/></svg>");
+      background-image:
+        radial-gradient(ellipse at 25% 50%, rgba(0, 0, 0, 0.35), transparent 70%),
+        linear-gradient(to right, rgba(11, 15, 24, 0.82) 0%, rgba(11, 15, 24, 0.3) 55%, transparent 100%),
+        url('assets/heroes/home-gate-heavy.png');
+      background-size: auto, auto, cover;
+      background-position: center, center, 60% center;
+      background-repeat: no-repeat;
     }
 
     .panel__inner {
@@ -286,7 +291,7 @@
       text-transform: uppercase;
       border-radius: 999px;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      background: rgba(0, 229, 200, 0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
     .panel__enter:hover {
       background: var(--apx-xenon);
@@ -296,7 +301,7 @@
     .panel--heavy .panel__enter {
       border-color: var(--apx-flare);
       color: var(--apx-flare);
-      background: rgba(255, 176, 32, 0.05);
+      background: rgba(255, 255, 255, 0.05);
     }
     .panel--heavy .panel__enter:hover {
       background: var(--apx-flare);
@@ -346,7 +351,7 @@
       text-transform: uppercase;
       color: var(--apx-mist);
       border-top: 1px solid var(--apx-wire);
-      background: rgba(5, 6, 10, 0.75);
+      background: rgba(11, 15, 24, 0.75);
       backdrop-filter: blur(6px);
     }
     .strip__accent { color: var(--apx-xenon); }
@@ -387,8 +392,7 @@
 <body>
   <nav class="nav">
     <a href="index.html" class="nav__brand">
-      <span class="nav__brand-mark" aria-hidden="true"></span>
-      <span>APEAX</span>
+      <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
     </a>
     <div class="nav__links">
       <a href="passenger.html">Passenger</a>
