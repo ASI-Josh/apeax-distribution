@@ -141,18 +141,12 @@ button {
 }
 
 .nav__brand-mark {
-  width: 24px;
-  height: 24px;
-  border: 1.5px solid var(--apx-xenon);
-  transform: rotate(45deg);
-  position: relative;
-}
-.nav__brand-mark::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  background: var(--apx-xenon);
-  opacity: 0.4;
+  display: block;
+  height: 44px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .nav__links {
