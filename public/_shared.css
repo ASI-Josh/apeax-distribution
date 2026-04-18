@@ -142,9 +142,9 @@ button {
 
 .nav__brand-mark {
   display: block;
-  height: 44px;
+  height: 120px;
   width: auto;
-  max-width: 140px;
+  max-width: 360px;
   object-fit: contain;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
@@ -367,6 +367,18 @@ section {
   color: var(--apx-ash);
   text-transform: uppercase;
   margin-bottom: var(--sp-4);
+}
+
+.card__logo {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: var(--sp-5);
+  image-rendering: auto;
 }
 
 .card__title {
