@@ -1,30 +1,55 @@
 /* ============================================
    APEAX DISTRIBUTION PORTAL · SHARED STYLES
-   Design System v1.0 · 2026-04-09
+   Design System v2.0 · 2026-04-19
+   Monochrome inverse-pair per BRAND-DECISIONS.md v1.0 (LOCKED).
+   Token names preserved for backwards-compat; values replaced.
    ============================================ */
 
 :root {
-  /* COLOUR */
-  --apx-void: #05060A;
-  --apx-carbon: #0E1218;
-  --apx-graphite: #1A2130;
-  --apx-slate: #242D3F;
-  --apx-bone: #F2F4F7;
-  --apx-mist: #9BA3B3;
-  --apx-ash: #6B7488;
-  --apx-xenon: #00E5C8;
-  --apx-xenon-dim: #00A890;
-  --apx-flare: #FFB020;
-  --apx-flare-dim: #CC8A10;
-  --apx-verdigris: #2FD27E;
-  --apx-ember: #FF7A33;
-  --apx-crimson: #FF3D5E;
-  --apx-wire: rgba(255, 255, 255, 0.08);
-  --apx-wire-strong: rgba(255, 255, 255, 0.14);
-  --apx-trace: rgba(0, 229, 200, 0.4);
-  --apx-trace-warm: rgba(255, 176, 32, 0.4);
+  /* MONOCHROME PRIMARIES — source: BRAND-DECISIONS.md §2 */
+  --apx-dark:       #1E2531;   /* Primary dark, matches logo stroke */
+  --apx-dark-bg:    #0B0F18;   /* Hero / dark-state background */
+  --apx-light:      #FFFFFF;   /* Primary light */
+  --apx-light-bg:   #FAFBFC;   /* Light-state gentle tint */
 
-  /* TYPE */
+  /* DERIVED GREYSCALE — opacity of --apx-dark on light bg */
+  --apx-grey-95:    rgba(30, 37, 49, 0.95);
+  --apx-grey-70:    rgba(30, 37, 49, 0.70);
+  --apx-grey-50:    rgba(30, 37, 49, 0.50);
+  --apx-grey-30:    rgba(30, 37, 49, 0.30);
+  --apx-grey-12:    rgba(30, 37, 49, 0.12);
+
+  /* INVERSE GREYSCALE — opacity of white on dark bg */
+  --apx-light-70:   rgba(255, 255, 255, 0.70);
+  --apx-light-50:   rgba(255, 255, 255, 0.50);
+  --apx-light-30:   rgba(255, 255, 255, 0.30);
+  --apx-light-12:   rgba(255, 255, 255, 0.12);
+
+  /* FUNCTIONAL — form states only, no brand intent */
+  --apx-success:    #22C55E;
+  --apx-error:      #EF4444;
+
+  /* LEGACY TOKEN ALIASES — preserved so existing markup keeps working */
+  --apx-void:       #0B0F18;                   /* was deepest bg, now = dark-bg */
+  --apx-carbon:     #121821;                   /* card/elevated dark surface */
+  --apx-graphite:   #1E2531;                   /* = primary dark */
+  --apx-slate:      #242D3F;                   /* slight lift for nav, dividers */
+  --apx-bone:       #FFFFFF;                   /* = primary light */
+  --apx-mist:       rgba(255, 255, 255, 0.70); /* body-copy on dark */
+  --apx-ash:        rgba(255, 255, 255, 0.50); /* captions on dark */
+  --apx-xenon:      #FFFFFF;                   /* former cyan, now monochrome white */
+  --apx-xenon-dim:  rgba(255, 255, 255, 0.70);
+  --apx-flare:      #FFFFFF;                   /* former amber, now monochrome white */
+  --apx-flare-dim:  rgba(255, 255, 255, 0.70);
+  --apx-verdigris:  #22C55E;                   /* retained for success states only */
+  --apx-ember:      #FFFFFF;                   /* collapsed to monochrome */
+  --apx-crimson:    #EF4444;                   /* retained for error states only */
+  --apx-wire:       rgba(255, 255, 255, 0.08);
+  --apx-wire-strong:rgba(255, 255, 255, 0.14);
+  --apx-trace:      rgba(255, 255, 255, 0.4);
+  --apx-trace-warm: rgba(255, 255, 255, 0.4);
+
+  /* TYPE — unchanged per BRAND-DECISIONS §4 */
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
@@ -79,8 +104,8 @@ html {
 }
 
 html, body {
-  background: var(--apx-void);
-  color: var(--apx-bone);
+  background: var(--apx-dark-bg);
+  color: var(--apx-light);
   font-family: var(--font-body);
   font-size: var(--fs-body-md);
   line-height: 1.5;
@@ -122,7 +147,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(180deg, rgba(5, 6, 10, 0.9), rgba(5, 6, 10, 0.6) 70%, transparent);
+  background: linear-gradient(180deg, rgba(11, 15, 24, 0.9), rgba(11, 15, 24, 0.6) 70%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--apx-wire);
@@ -134,7 +159,7 @@ button {
   font-size: 1.25rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--apx-bone);
+  color: var(--apx-light);
   display: flex;
   align-items: center;
   gap: var(--sp-3);
@@ -159,20 +184,20 @@ button {
   font-weight: 500;
 }
 
-.nav__links a { color: var(--apx-mist); }
-.nav__links a:hover { color: var(--apx-bone); }
-.nav__links a.is-active { color: var(--apx-bone); }
+.nav__links a { color: var(--apx-light-70); }
+.nav__links a:hover { color: var(--apx-light); }
+.nav__links a.is-active { color: var(--apx-light); }
 
 .nav__cta {
   padding: 10px 20px;
-  border: 1px solid var(--apx-xenon);
-  color: var(--apx-xenon) !important;
+  border: 1px solid var(--apx-light);
+  color: var(--apx-light) !important;
   border-radius: var(--rad-pill);
   transition: all 0.25s var(--ease-crisp);
 }
 .nav__cta:hover {
-  background: var(--apx-xenon);
-  color: var(--apx-void) !important;
+  background: var(--apx-light);
+  color: var(--apx-dark-bg) !important;
 }
 
 @media (max-width: 900px) {
@@ -190,7 +215,7 @@ button {
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS — inverse-pair hover semantics
    ============================================ */
 
 .btn {
@@ -209,43 +234,47 @@ button {
   font-family: var(--font-body);
 }
 
+/* Primary: white fill, dark text. Hover inverts to dark fill, white text. */
 .btn--primary {
-  background: var(--apx-xenon);
-  color: var(--apx-void);
+  background: var(--apx-light);
+  color: var(--apx-dark-bg);
 }
 .btn--primary:hover {
-  background: var(--apx-bone);
+  background: var(--apx-dark);
+  color: var(--apx-light);
   transform: translateX(4px);
 }
 
+/* Outline on dark bg: white stroke + white text, hover fills white. */
 .btn--outline {
-  background: rgba(0, 229, 200, 0.05);
-  border-color: var(--apx-xenon);
-  color: var(--apx-xenon);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--apx-light);
+  color: var(--apx-light);
 }
 .btn--outline:hover {
-  background: var(--apx-xenon);
-  color: var(--apx-void);
+  background: var(--apx-light);
+  color: var(--apx-dark-bg);
   transform: translateX(4px);
 }
 
+/* Warm variant collapsed to same as outline — no amber in monochrome. */
 .btn--warm {
-  background: rgba(255, 176, 32, 0.05);
-  border-color: var(--apx-flare);
-  color: var(--apx-flare);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--apx-light);
+  color: var(--apx-light);
 }
 .btn--warm:hover {
-  background: var(--apx-flare);
-  color: var(--apx-void);
+  background: var(--apx-light);
+  color: var(--apx-dark-bg);
 }
 
 .btn--ghost {
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   border-color: var(--apx-wire-strong);
 }
 .btn--ghost:hover {
-  color: var(--apx-bone);
-  border-color: var(--apx-bone);
+  color: var(--apx-light);
+  border-color: var(--apx-light);
 }
 
 .btn__arrow {
@@ -262,7 +291,7 @@ button {
   font-size: var(--fs-mono);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   display: inline-flex;
   align-items: center;
   gap: var(--sp-3);
@@ -272,9 +301,9 @@ button {
   content: '';
   width: 32px;
   height: 1px;
-  background: var(--apx-xenon);
+  background: var(--apx-light);
 }
-.eyebrow--warm::before { background: var(--apx-flare); }
+.eyebrow--warm::before { background: var(--apx-light); }
 
 /* ============================================
    HEADLINES
@@ -282,7 +311,7 @@ button {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  color: var(--apx-bone);
+  color: var(--apx-light);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -297,7 +326,7 @@ h1, h2, h3, h4 {
 .lead {
   font-size: var(--fs-body-xl);
   line-height: 1.55;
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   max-width: 60ch;
 }
 
@@ -315,7 +344,7 @@ section {
 }
 
 /* ============================================
-   PRODUCT CARD
+   PRODUCT CARD — monochrome, no chromatic glow
    ============================================ */
 
 .card-grid {
@@ -340,31 +369,31 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(0, 229, 200, 0.08), transparent 60%);
+  background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.06), transparent 60%);
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
   pointer-events: none;
 }
 .card:hover {
   background: var(--apx-graphite);
-  border-color: var(--apx-trace);
+  border-color: var(--apx-light-30);
   transform: translateY(-4px);
 }
 .card:hover::before {
   opacity: 1;
 }
 .card--warm::before {
-  background: radial-gradient(ellipse at top right, rgba(255, 176, 32, 0.08), transparent 60%);
+  background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.06), transparent 60%);
 }
 .card--warm:hover {
-  border-color: var(--apx-trace-warm);
+  border-color: var(--apx-light-30);
 }
 
 .card__sku {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
   letter-spacing: 0.14em;
-  color: var(--apx-ash);
+  color: var(--apx-light-50);
   text-transform: uppercase;
   margin-bottom: var(--sp-4);
 }
@@ -392,7 +421,7 @@ section {
 }
 
 .card__desc {
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   margin-bottom: var(--sp-5);
   font-size: var(--fs-body-md);
   flex: 1;
@@ -408,17 +437,17 @@ section {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--apx-xenon);
+  color: var(--apx-light);
   text-transform: uppercase;
   padding: 4px 10px;
-  border: 1px solid var(--apx-trace);
+  border: 1px solid var(--apx-light-30);
   border-radius: var(--rad-sm);
-  background: rgba(0, 229, 200, 0.04);
+  background: rgba(255, 255, 255, 0.04);
 }
 .card--warm .card__spec {
-  color: var(--apx-flare);
-  border-color: var(--apx-trace-warm);
-  background: rgba(255, 176, 32, 0.04);
+  color: var(--apx-light);
+  border-color: var(--apx-light-30);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .card__cta {
@@ -429,17 +458,17 @@ section {
   font-size: var(--fs-mono);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--apx-xenon);
+  color: var(--apx-light);
   margin-top: auto;
   padding-top: var(--sp-4);
   border-top: 1px solid var(--apx-wire);
   transition: color 0.2s;
 }
 .card__cta:hover {
-  color: var(--apx-bone);
+  color: var(--apx-light-70);
 }
 .card--warm .card__cta {
-  color: var(--apx-flare);
+  color: var(--apx-light);
 }
 
 /* ============================================
@@ -471,16 +500,16 @@ section {
   margin-top: var(--sp-5);
   margin-bottom: var(--sp-4);
 }
-.footer__tagline span { color: var(--apx-xenon); }
+.footer__tagline span { color: var(--apx-light); }
 .footer__small {
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   font-size: var(--fs-body-sm);
 }
 
 .footer__col h4 {
   font-size: 0.75rem;
   letter-spacing: 0.14em;
-  color: var(--apx-ash);
+  color: var(--apx-light-50);
   margin-bottom: var(--sp-4);
   text-transform: uppercase;
   font-family: var(--font-mono);
@@ -489,10 +518,10 @@ section {
 .footer__col ul { list-style: none; }
 .footer__col li { margin-bottom: var(--sp-3); }
 .footer__col a {
-  color: var(--apx-mist);
+  color: var(--apx-light-70);
   font-size: var(--fs-body-sm);
 }
-.footer__col a:hover { color: var(--apx-bone); }
+.footer__col a:hover { color: var(--apx-light); }
 
 .footer__strip {
   border-top: 1px solid var(--apx-wire);
@@ -504,9 +533,9 @@ section {
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--apx-ash);
+  color: var(--apx-light-50);
 }
-.footer__strip a { color: var(--apx-xenon); }
+.footer__strip a { color: var(--apx-light); }
 
 @media (max-width: 900px) {
   .footer__grid {
@@ -524,9 +553,9 @@ section {
    ============================================ */
 
 .mono { font-family: var(--font-mono); }
-.mist { color: var(--apx-mist); }
-.xenon { color: var(--apx-xenon); }
-.flare { color: var(--apx-flare); }
+.mist { color: var(--apx-light-70); }
+.xenon { color: var(--apx-light); }   /* legacy alias */
+.flare { color: var(--apx-light); }   /* legacy alias */
 
 .reveal {
   opacity: 0;
