@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
   <link rel="shortcut icon" href="assets/favicon.ico">
   <title>APEAX XTREME SERIES · Performance Films for Australia</title>
-  <meta name="description" content="German-engineered performance films for Australian passenger and heavy vehicle applications. Australian exclusive distribution. Trade enquiries welcome.">
+  <meta name="description" content="German-engineered performance films for Australian light and heavy vehicle applications. Australian exclusive distribution. Trade enquiries welcome.">
   <meta name="robots" content="index, follow">
 
   <meta property="og:title" content="APEAX XTREME SERIES">
@@ -268,6 +268,7 @@
       margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 0.02em;
+      min-height: 3lh; /* Reserve 3 lines so LIGHT and HEAVY headlines y-align across panels */
     }
 
     .panel__desc {
@@ -376,6 +377,7 @@
         justify-content: flex-end;
       }
       .panel__meta { display: none; }
+      .panel__sub { min-height: auto; } /* No cross-panel alignment needed when stacked vertically */
       .strip {
         padding: 16px 32px;
         font-size: 0.65rem;
@@ -396,7 +398,7 @@
       <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
     </a>
     <div class="nav__links">
-      <a href="passenger.html">Passenger</a>
+      <a href="passenger.html">Light</a>
       <a href="heavy.html">Heavy</a>
       <a href="warranty.html">Warranty</a>
       <a href="quote.html">Quote</a>
@@ -408,20 +410,20 @@
     <a href="passenger.html" class="panel panel--passenger">
       <div class="panel__bg" aria-hidden="true"></div>
       <div class="panel__meta">
-        01 / PASSENGER<br>
+        01 / LIGHT<br>
         <span>Light Vehicle Applications</span>
       </div>
       <div class="panel__inner">
         <img src="assets/brand/xtremeserieslogo_white1.png" alt="XTREME Series" style="height:48px;width:auto;margin-bottom:24px;display:block;">
         <p class="panel__eyebrow" style="margin-bottom: 16px;">Light Vehicle</p>
-        <h1 class="panel__headline">Passenger.</h1>
+        <h1 class="panel__headline">Light.</h1>
         <p class="panel__sub">Prestige · Tesla · Rideshare</p>
         <p class="panel__desc">
           Optical protection engineered for the windscreen that earns its keep.
           Self-healing polyurethane, hydrophobic surface chemistry, ADR-compliant tint where allowed.
         </p>
         <span class="panel__enter">
-          Enter Passenger
+          Enter Light
           <span class="panel__arrow">→</span>
         </span>
       </div>
