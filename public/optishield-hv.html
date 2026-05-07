@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#CEDC00">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
   <title>XTREME OptiShield · Heavy Vehicle · APEAX</title>
   <meta name="description" content="XTREME OptiShield. The flagship heavy vehicle glass protection film. German-engineered for Australian mass-transit duty.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_shared.css">
-  <script src="assets/js/analytics.js" async></script>
   <style>
     .product-hero {
       min-height: 90vh;
@@ -19,21 +22,21 @@
       display: flex;
       align-items: center;
     }
+    .product-hero { background: var(--apx-light); }
     .product-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 80% 40%, rgba(255, 176, 32, 0.2), transparent 55%),
-        radial-gradient(ellipse at 20% 80%, rgba(255, 122, 51, 0.08), transparent 60%),
-        linear-gradient(135deg, #1a1208 0%, #05060A 60%);
+        radial-gradient(ellipse at 80% 40%, var(--apx-lime-glow), transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.6), transparent 60%);
       z-index: 0;
     }
     .product-hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='g' width='80' height='80' patternUnits='userSpaceOnUse'><path d='M 80 0 L 0 0 0 80' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23g)'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='g' width='80' height='80' patternUnits='userSpaceOnUse'><path d='M 80 0 L 0 0 0 80' fill='none' stroke='rgba(11,16,20,0.04)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23g)'/></svg>");
       z-index: 0;
     }
     .product-hero__inner {
@@ -59,17 +62,18 @@
     .product-name {
       font-size: clamp(3rem, 7vw, 5.5rem);
       line-height: 0.9;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
       margin-bottom: var(--sp-4);
+      color: var(--apx-void);
     }
     .product-tagline {
       font-family: var(--font-display);
       font-size: clamp(1.25rem, 2vw, 1.75rem);
-      color: var(--apx-flare);
+      color: var(--apx-graphite);
       text-transform: uppercase;
       letter-spacing: 0.02em;
       margin-bottom: var(--sp-6);
-      font-weight: 400;
+      font-weight: 600;
     }
     .product-desc {
       font-size: var(--fs-body-lg);
@@ -80,13 +84,15 @@
     }
 
     .price-panel {
-      background: var(--apx-carbon);
-      border: 1px solid var(--apx-wire-strong);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-08);
       border-radius: var(--rad-lg);
       padding: var(--sp-7);
       position: sticky;
-      top: 100px;
+      top: 110px;
+      box-shadow: 0 12px 32px var(--apx-ink-08);
     }
+    .price-panel__rrp { color: var(--apx-void); }
     .price-panel__label {
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -112,16 +118,16 @@
       text-transform: uppercase;
     }
     .price-panel__trade {
-      background: rgba(255, 176, 32, 0.05);
-      border: 1px dashed var(--apx-trace-warm);
+      background: var(--apx-lime-soft);
+      border: 1px dashed var(--apx-lime-deep);
       border-radius: var(--rad-md);
       padding: var(--sp-4);
       margin-bottom: var(--sp-6);
       font-size: var(--fs-body-sm);
-      color: var(--apx-flare);
+      color: var(--apx-graphite);
       line-height: 1.5;
     }
-    .price-panel__trade strong { color: var(--apx-bone); font-weight: 600; }
+    .price-panel__trade strong { color: var(--apx-void); font-weight: 700; }
     .price-panel__ctas { display: flex; flex-direction: column; gap: var(--sp-3); }
     .price-panel__cta {
       width: 100%;
@@ -180,19 +186,22 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 1px;
-      background: var(--apx-wire);
-      border-top: 1px solid var(--apx-wire);
-      border-bottom: 1px solid var(--apx-wire);
+      background: var(--apx-ink-08);
+      border: 1px solid var(--apx-ink-08);
+      border-radius: var(--rad-lg);
       margin: var(--sp-8) 0;
+      overflow: hidden;
     }
     .feature {
-      background: var(--apx-void);
+      background: var(--apx-white);
       padding: var(--sp-7);
+      transition: background 0.3s var(--ease-out);
     }
+    .feature:hover { background: var(--apx-lime-soft); }
     .feature__icon {
-      width: 40px;
-      height: 40px;
-      border: 1.5px solid var(--apx-flare);
+      width: 44px;
+      height: 44px;
+      background: var(--apx-lime);
       border-radius: var(--rad-sm);
       margin-bottom: var(--sp-5);
       position: relative;
@@ -200,20 +209,21 @@
     .feature__icon::after {
       content: '';
       position: absolute;
-      inset: 8px;
-      background: var(--apx-flare);
-      opacity: 0.3;
+      inset: 10px;
+      background: var(--apx-void);
+      border-radius: var(--rad-sm);
     }
     .feature__title {
       font-family: var(--font-display);
       font-size: 1.25rem;
       text-transform: uppercase;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: -0.01em;
       margin-bottom: var(--sp-3);
+      color: var(--apx-void);
     }
     .feature__desc {
-      color: var(--apx-mist);
+      color: var(--apx-grey-deep);
       font-size: var(--fs-body-sm);
       line-height: 1.6;
     }
@@ -224,12 +234,21 @@
       left: var(--gutter);
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      color: var(--apx-mist);
+      color: var(--apx-grey-deep);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       z-index: 2;
+      padding: 8px 14px;
+      border-radius: var(--rad-pill);
+      background: var(--apx-snow-95);
+      border: 1px solid var(--apx-ink-08);
+      transition: all 0.2s var(--ease-crisp);
     }
-    .back-link:hover { color: var(--apx-flare); }
+    .back-link:hover {
+      color: var(--apx-void);
+      border-color: var(--apx-lime);
+      background: var(--apx-white);
+    }
 
     @media (max-width: 900px) {
       .product-hero__inner { grid-template-columns: 1fr; }
@@ -243,7 +262,7 @@
 
   <nav class="nav">
     <a href="index.html" class="nav__brand">
-      <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
+      <img src="assets/brand/apeax-tagline-dark-grey.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
     </a>
     <div class="nav__links">
       <a href="passenger.html">Passenger</a>
@@ -429,13 +448,11 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer is-dark">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="nav__brand">
-            <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
-          </div>
+          <img src="assets/brand/apeax-tagline-white.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
           <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
           <p class="footer__small">
             Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.

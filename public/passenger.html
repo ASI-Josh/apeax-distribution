@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0F18">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="shortcut icon" href="assets/favicon.ico">
-  <title>Passenger · APEAX XTREME Series</title>
+  <meta name="theme-color" content="#CEDC00">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <title>Light Vehicle · APEAX XTREME Series</title>
   <meta name="description" content="APEAX XTREME Series films for light vehicle applications. Optical protection engineered for prestige, Tesla, and rideshare fleets.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_shared.css">
-  <script src="assets/js/analytics.js" async></script>
+
   <style>
+    /* ============================================
+       LIGHT VEHICLE HERO - light theme over hero photo
+       White-to-clear gradient keeps the photograph
+       legible while ensuring all type stays readable.
+       ============================================ */
     .hero-passenger {
-      min-height: 85vh;
+      min-height: 88vh;
       padding: 180px var(--gutter) var(--sp-9);
       position: relative;
       overflow: hidden;
@@ -33,32 +37,16 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(11, 15, 24, 0.92) 0%, rgba(11, 15, 24, 0.65) 45%, rgba(11, 15, 24, 0.15) 100%),
-        radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, 0.06), transparent 60%);
+        linear-gradient(to right, var(--apx-white) 0%, var(--apx-snow-95) 35%, rgba(255, 255, 255, 0.55) 65%, rgba(255, 255, 255, 0.15) 100%),
+        radial-gradient(ellipse at 80% 70%, var(--apx-lime-glow), transparent 55%);
       z-index: 0;
     }
     .hero-passenger::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(11,16,20,0.04)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
       z-index: 0;
-    }
-    /* CATALOGUE CTA */
-    .catalogue-cta {
-      padding: var(--sp-9) 0;
-      border-top: 1px solid var(--apx-wire);
-      border-bottom: 1px solid var(--apx-wire);
-    }
-    .catalogue-cta__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--sp-7);
-      flex-wrap: wrap;
-    }
-    @media (max-width: 700px) {
-      .catalogue-cta__inner { flex-direction: column; align-items: flex-start; }
     }
     .hero-passenger__inner {
       position: relative;
@@ -80,48 +68,107 @@
       gap: var(--sp-8);
       margin-top: var(--sp-8);
       padding-top: var(--sp-6);
-      border-top: 1px solid var(--apx-wire);
+      border-top: 1px solid var(--apx-ink-08);
       flex-wrap: wrap;
     }
-    .stat__value {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--apx-xenon);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-    .stat__label {
-      font-family: var(--font-mono);
-      font-size: var(--fs-mono);
-      color: var(--apx-mist);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-top: var(--sp-2);
-    }
+
+    /* ============================================
+       SECTION HEADERS
+       ============================================ */
     .section-header .eyebrow { margin-bottom: var(--sp-5); }
+
+    /* ============================================
+       BACK LINK
+       ============================================ */
     .back-link {
       position: absolute;
-      top: 120px;
+      top: 110px;
       left: var(--gutter);
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      color: var(--apx-mist);
+      color: var(--apx-grey-deep);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       z-index: 2;
+      padding: 8px 14px;
+      border-radius: var(--rad-pill);
+      background: var(--apx-snow-95);
+      border: 1px solid var(--apx-ink-08);
+      transition: all 0.2s var(--ease-crisp);
     }
-    .back-link:hover { color: var(--apx-xenon); }
+    .back-link:hover {
+      color: var(--apx-void);
+      border-color: var(--apx-lime);
+      background: var(--apx-white);
+    }
+
+    /* ============================================
+       CATALOGUE CTA
+       ============================================ */
+    .catalogue-cta {
+      padding: var(--sp-9) 0;
+      border-top: 1px solid var(--apx-ink-08);
+      border-bottom: 1px solid var(--apx-ink-08);
+      background: var(--apx-light);
+    }
+    .catalogue-cta__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-7);
+      flex-wrap: wrap;
+    }
+    @media (max-width: 700px) {
+      .catalogue-cta__inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ============================================
+       WHY GRID - 2x2 feature callouts
+       ============================================ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-6);
+    }
+    .why-card {
+      padding: var(--sp-6);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-08);
+      border-radius: var(--rad-lg);
+      border-top: 4px solid var(--apx-lime);
+      transition: all 0.3s var(--ease-out);
+    }
+    .why-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--apx-lime);
+      box-shadow: 0 12px 32px var(--apx-ink-08);
+    }
+    .why-card__title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      color: var(--apx-void);
+      margin-bottom: var(--sp-3);
+    }
+    .why-card__desc {
+      font-size: var(--fs-body-md);
+      line-height: 1.6;
+      color: var(--apx-grey-deep);
+    }
+    @media (max-width: 700px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="nav__brand">
-      <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
+    <a href="index.html" class="nav__brand" aria-label="APEAX Australia home">
+      <img src="assets/brand/apeax-tagline-dark-grey.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
     </a>
     <div class="nav__links">
-      <a href="passenger.html" class="is-active">Passenger</a>
+      <a href="passenger.html" class="is-active">Light</a>
       <a href="heavy.html">Heavy</a>
       <a href="warranty.html">Warranty</a>
       <a href="mailto:shield@asi-australia.com.au">Contact</a>
@@ -129,44 +176,43 @@
     </div>
   </nav>
 
-  <a href="index.html" class="back-link">← Back to Gate</a>
+  <a href="index.html" class="back-link">&larr; Back to Gate</a>
 
   <header class="hero-passenger">
     <div class="hero-passenger__inner">
-      <img src="assets/brand/xtremeserieslogo_white1.png" alt="APEAX XTREME Series" style="height:56px;width:auto;margin-bottom:var(--sp-5);display:block;">
-      <p class="eyebrow">01 / Passenger · Light Vehicle Applications</p>
+      <p class="eyebrow">01 / Light Vehicle Applications</p>
       <h1 class="h-xl hero-passenger__headline">Clarity you can hand to the customer.</h1>
       <p class="lead hero-passenger__lead">
         APEAX XTREME Series films for prestige, Tesla, and rideshare fleets.
-        Self-healing aliphatic polyurethane, hydrophobic surface chemistry, and optical clarity
-        engineered to hold up across a Melbourne to Darwin year.
+        Self-healing aliphatic polyurethane, hydrophobic surface chemistry, and
+        optical clarity engineered to hold up across a Melbourne to Darwin year.
       </p>
       <div style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
         <a href="#products" class="btn btn--primary">
           Explore Light Vehicle Range
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
         <a href="#quote" class="btn btn--outline">
           Request Trade Quote
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
       </div>
       <div class="hero-passenger__stats">
         <div>
-          <div class="stat__value">99<span style="color: var(--apx-bone); font-size: 0.5em;">%</span></div>
+          <div class="stat__value">99<span style="color: var(--apx-grey-mid); font-size: 0.5em;">%</span></div>
           <div class="stat__label">UV Block</div>
         </div>
         <div>
-          <div class="stat__value">10<span style="color: var(--apx-bone); font-size: 0.5em;">yr</span></div>
-          <div class="stat__label">Warranty (Gloss 60)</div>
+          <div class="stat__value">10<span style="color: var(--apx-grey-mid); font-size: 0.5em;">yr</span></div>
+          <div class="stat__label">Warranty</div>
         </div>
         <div>
-          <div class="stat__value">60<span style="color: var(--apx-bone); font-size: 0.5em;">%</span></div>
-          <div class="stat__label">Lifecycle Cost Saving</div>
+          <div class="stat__value">60<span style="color: var(--apx-grey-mid); font-size: 0.5em;">%</span></div>
+          <div class="stat__label">Lifecycle Saving</div>
         </div>
         <div>
           <div class="stat__value">R43</div>
-          <div class="stat__label">UN/ECE Compliance</div>
+          <div class="stat__label">UN/ECE Compliant</div>
         </div>
       </div>
     </div>
@@ -177,8 +223,9 @@
       <p class="eyebrow">Range · Light Vehicle</p>
       <h2 class="h-lg" style="max-width: 18ch;">The Light Vehicle Range.</h2>
       <p class="lead" style="margin-top: var(--sp-5);">
-        Four films, one family. Each one built for a specific surface, each one backed by the
-        same APEAX engineering DNA. Public RRP shown, trade discount available on installer login.
+        Four films, one family. Each one built for a specific surface, each one
+        backed by the same APEAX engineering DNA. Public RRP shown, trade discount
+        available on installer login.
       </p>
     </div>
 
@@ -187,6 +234,7 @@
       <article class="card">
         <div class="card__sku">APX-LV-GRAFSHIELD-XT</div>
         <img src="assets/brand/Golden X Grafshield Logo.png" alt="XTREME GrafShield" class="card__logo">
+        <h3 class="card__title">XTREME GrafShield</h3>
         <p class="card__desc">
           Anti-tag, anti-etch sacrificial film for light vehicle interior surfaces and
           high-traffic panels. Solvent-resistant hardcoat, peel-and-replace workflow.
@@ -194,94 +242,98 @@
         <div class="card__specs">
           <span class="card__spec">Sacrificial</span>
           <span class="card__spec">Solvent Resistant</span>
-          <span class="card__spec">Peel & Replace</span>
+          <span class="card__spec">Peel &amp; Replace</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
       <article class="card">
         <div class="card__sku">APX-WPF-WPF60X15</div>
         <img src="assets/brand/Golden X Optishield Logo.png" alt="XTREME OptiShield" class="card__logo">
+        <h3 class="card__title">XTREME OptiShield</h3>
         <p class="card__desc">
-          The long-term performance and glass protection film for side glazing and panoramic
-          roofs. Tesla Model 3/Y/S/X specific patterns available. Heat-powered self-healing.
+          The long-term performance and glass protection film for side glazing and
+          panoramic roofs. Tesla Model 3/Y/S/X specific patterns available.
+          Heat-powered self-healing.
         </p>
         <div class="card__specs">
-          <span class="card__spec">1.52m × 15.24m</span>
+          <span class="card__spec">1.52m &times; 15.24m</span>
           <span class="card__spec">3yr Warranty</span>
           <span class="card__spec">99% UV</span>
           <span class="card__spec">Hydrophobic</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
       <article class="card">
         <div class="card__sku">APX-PNT-PS-LV</div>
         <img src="assets/brand/paintshield_goldX_transparent.png" alt="XTREME PaintShield" class="card__logo">
+        <h3 class="card__title">XTREME PaintShield</h3>
         <p class="card__desc">
-          Self-healing paint protection for high-wear zones: front bumper, bonnet, mirrors,
-          door edges. Chip and stain defence without visible seams.
+          Self-healing paint protection for high-wear zones: front bumper, bonnet,
+          mirrors, door edges. Chip and stain defence without visible seams.
         </p>
         <div class="card__specs">
           <span class="card__spec">Full Panel Kit</span>
           <span class="card__spec">5yr Warranty</span>
           <span class="card__spec">Self-Healing</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
       <article class="card">
         <div class="card__sku">APX-CT-70S40-001</div>
         <img src="assets/brand/Xtreme_RadShield_GoldX_Transparent.png" alt="XTREME RadShield" class="card__logo">
+        <h3 class="card__title">XTREME RadShield</h3>
         <p class="card__desc">
           Solar control film for heat and glare reduction on side glazing and sunroofs.
           Ceramic-stabilised, non-metallic, RF and GPS safe. Lifetime warranty.
         </p>
         <div class="card__specs">
-          <span class="card__spec">40" × 100ft</span>
+          <span class="card__spec">40&quot; &times; 100ft</span>
           <span class="card__spec">Lifetime</span>
           <span class="card__spec">RF Safe</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
     </div>
   </section>
 
-  <section id="why">
+  <section id="why" class="section--light-grey">
     <div class="container">
       <div style="display: grid; grid-template-columns: 1fr 2fr; gap: var(--sp-9); align-items: start;">
         <div>
           <p class="eyebrow">Engineering</p>
-          <h2 class="h-md">Why Passenger installers choose APEAX.</h2>
+          <h2 class="h-md">Why Light Vehicle installers choose APEAX.</h2>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6);">
-          <div>
-            <div class="stat__value" style="font-size: 1.25rem; color: var(--apx-bone);">Self-Healing Hardcoat</div>
-            <p class="mist" style="margin-top: var(--sp-3); font-size: var(--fs-body-md);">
-              Aliphatic polyurethane top layer recovers from swirl marks and light scratches
-              with residual heat. No additional curing step in the install.
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-card__title">Self-Healing Hardcoat</div>
+            <p class="why-card__desc">
+              Aliphatic polyurethane top layer recovers from swirl marks and light
+              scratches with residual heat. No additional curing step in the install.
             </p>
           </div>
-          <div>
-            <div class="stat__value" style="font-size: 1.25rem; color: var(--apx-bone);">UV-Stabilised PET Core</div>
-            <p class="mist" style="margin-top: var(--sp-3); font-size: var(--fs-body-md);">
-              Optical-grade PET base with UV-stabilised chemistry. 99% harmful ray rejection
-              across the full warranty window.
+          <div class="why-card">
+            <div class="why-card__title">UV-Stabilised PET Core</div>
+            <p class="why-card__desc">
+              Optical-grade PET base with UV-stabilised chemistry. 99% harmful ray
+              rejection across the full warranty window.
             </p>
           </div>
-          <div>
-            <div class="stat__value" style="font-size: 1.25rem; color: var(--apx-bone);">Hydrophobic Surface</div>
-            <p class="mist" style="margin-top: var(--sp-3); font-size: var(--fs-body-md);">
-              Water sheet-off reduces mineral staining, makes wash cycles faster, and keeps
-              the customer's car presentable between details.
+          <div class="why-card">
+            <div class="why-card__title">Hydrophobic Surface</div>
+            <p class="why-card__desc">
+              Water sheet-off reduces mineral staining, makes wash cycles faster, and
+              keeps the customer's car presentable between details.
             </p>
           </div>
-          <div>
-            <div class="stat__value" style="font-size: 1.25rem; color: var(--apx-bone);">Clear Acrylic Adhesive</div>
-            <p class="mist" style="margin-top: var(--sp-3); font-size: var(--fs-body-md);">
-              Clean removal inside the warranty window. Low-residue. Re-installer friendly
-              if the customer wants a refresh.
+          <div class="why-card">
+            <div class="why-card__title">Clear Acrylic Adhesive</div>
+            <p class="why-card__desc">
+              Clean removal inside the warranty window. Low-residue. Re-installer
+              friendly if the customer wants a refresh.
             </p>
           </div>
         </div>
@@ -293,16 +345,16 @@
     <div class="container">
       <div class="catalogue-cta__inner">
         <div>
-          <img src="assets/brand/xtremeserieslogo_white1.png" alt="APEAX XTREME Series" style="height:48px;width:auto;margin-bottom:var(--sp-4);display:block;">
+          <img src="assets/brand/apeax-primary-dark-grey.png" alt="APEAX" style="height:36px;width:auto;margin-bottom:var(--sp-4);display:block;">
           <h2 class="h-md" style="margin: var(--sp-4) 0 var(--sp-4);">Light Vehicle Product Catalogue 2026</h2>
           <p class="mist" style="max-width: 48ch; font-size: var(--fs-body-md); line-height: 1.7;">
             Full product specs, application guides, warranty terms, and installation
-            requirements for the complete APEAX passenger vehicle film range.
+            requirements for the complete APEAX light vehicle film range.
           </p>
         </div>
-        <a href="assets/apeax-catalogue-2026.pdf" download="APEAX-Catalogue-2026.pdf" class="btn btn--outline" aria-label="Download APEAX 2026 Catalogue PDF">
+        <a href="assets/apeax-catalogue-2026.pdf" download="APEAX-Catalogue-2026.pdf" class="btn btn--primary" aria-label="Download APEAX 2026 Catalogue PDF">
           Download Catalogue (PDF)
-          <span class="btn__arrow">↓</span>
+          <span class="btn__arrow">&darr;</span>
         </a>
       </div>
     </div>
@@ -315,40 +367,38 @@
         Fit it. Warranty it. Protect it.
       </h2>
       <p class="lead" style="margin: 0 auto var(--sp-7);">
-        Trade pricing and direct ordering are available to vetted Australian installers with
-        no exclusive alignment to competing film brands.
+        Trade pricing and direct ordering are available to vetted Australian installers
+        with no exclusive alignment to competing film brands.
       </p>
       <div style="display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap;">
         <a href="trade/apply.html" class="btn btn--primary">
           Apply for Trade Account
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
         <a href="quote.html" class="btn btn--ghost">
           Request Sample Pack
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer is-dark">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="nav__brand">
-            <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
-          </div>
+          <img src="assets/brand/apeax-tagline-white.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
           <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
           <p class="footer__small">
-            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.
-            Australia's exclusive APEAX distributor.
+            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution
+            Division. Australia's exclusive APEAX distributor.
           </p>
         </div>
         <div class="footer__col">
           <h4>Range</h4>
           <ul>
-            <li><a href="passenger.html">Passenger</a></li>
-            <li><a href="heavy.html">Heavy</a></li>
+            <li><a href="passenger.html">Light Vehicle</a></li>
+            <li><a href="heavy.html">Heavy Vehicle</a></li>
             <li><a href="#">Marine</a></li>
             <li><a href="#">Structural</a></li>
           </ul>
@@ -373,11 +423,12 @@
         </div>
       </div>
       <div class="footer__strip">
-        <div>© 2026 ASI Distribution Division · ABN [ASI]</div>
-        <div>ISO 9001 · 14001 · 45001 · <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
+        <div>&copy; 2026 ASI Distribution Division &middot; ABN 30 691 799 970</div>
+        <div>ISO 9001 &middot; 14001 &middot; 45001 &middot; <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
       </div>
     </div>
   </footer>
 
+  <script src="assets/js/analytics.js" async></script>
 </body>
 </html>

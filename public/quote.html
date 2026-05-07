@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#CEDC00">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
   <title>Request a Trade Quote · APEAX XTREME Series</title>
   <meta name="description" content="Request a trade quote for APEAX XTREME Series performance films. Direct from Australia's exclusive APEAX distributor.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_shared.css">
-  <script src="assets/js/analytics.js" async></script>
   <style>
+    /* ============================================
+       QUOTE HERO - light theme, lime accent moment
+       ============================================ */
     .quote-hero {
       padding: 180px var(--gutter) var(--sp-8);
       position: relative;
       overflow: hidden;
+      background: var(--apx-light);
     }
     .quote-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(0, 229, 200, 0.12), transparent 55%),
-        linear-gradient(180deg, #0a1520 0%, #05060A 60%);
+        radial-gradient(ellipse at 50% 0%, var(--apx-lime-glow), transparent 55%);
       z-index: 0;
     }
     .quote-hero__inner {
@@ -32,26 +38,34 @@
       margin: 0 auto;
       text-align: center;
     }
-    .quote-hero__headline {
-      max-width: 22ch;
-      margin: 0 auto var(--sp-5);
-    }
-    .quote-hero__lead {
-      margin: 0 auto;
-    }
+    .quote-hero__headline { max-width: 22ch; margin: 0 auto var(--sp-5); }
+    .quote-hero__lead { margin: 0 auto; }
+
     .back-link {
       position: absolute;
-      top: 120px;
+      top: 110px;
       left: var(--gutter);
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      color: var(--apx-mist);
+      color: var(--apx-grey-deep);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       z-index: 2;
+      padding: 8px 14px;
+      border-radius: var(--rad-pill);
+      background: var(--apx-snow-95);
+      border: 1px solid var(--apx-ink-08);
+      transition: all 0.2s var(--ease-crisp);
     }
-    .back-link:hover { color: var(--apx-xenon); }
+    .back-link:hover {
+      color: var(--apx-void);
+      border-color: var(--apx-lime);
+      background: var(--apx-white);
+    }
 
+    /* ============================================
+       FORM SHELL
+       ============================================ */
     .quote-shell {
       max-width: 1180px;
       margin: 0 auto;
@@ -63,35 +77,35 @@
     }
 
     .quote-form {
-      background: var(--apx-carbon);
-      border: 1px solid var(--apx-wire);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-08);
       border-radius: var(--rad-lg);
       padding: var(--sp-8);
+      box-shadow: 0 4px 16px var(--apx-ink-04);
+      counter-reset: section-count;
     }
 
-    .form__section {
-      margin-bottom: var(--sp-8);
-    }
+    .form__section { margin-bottom: var(--sp-8); counter-increment: section-count; }
     .form__section:last-child { margin-bottom: 0; }
     .form__section-title {
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      letter-spacing: 0.14em;
-      color: var(--apx-xenon);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--apx-charcoal);
       text-transform: uppercase;
       margin-bottom: var(--sp-5);
       padding-bottom: var(--sp-3);
-      border-bottom: 1px solid var(--apx-wire);
+      border-bottom: 1px solid var(--apx-ink-08);
       display: flex;
       align-items: center;
       gap: var(--sp-3);
     }
     .form__section-title::before {
       content: counter(section-count, decimal-leading-zero);
-      color: var(--apx-mist);
+      color: var(--apx-lime-deep);
+      font-weight: 600;
     }
-    .quote-form { counter-reset: section-count; }
-    .form__section { counter-increment: section-count; }
 
     .form__row {
       display: grid;
@@ -102,55 +116,53 @@
     .form__row--full { grid-template-columns: 1fr; }
     .form__row:last-child { margin-bottom: 0; }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-    }
+    .field { display: flex; flex-direction: column; }
     .field__label {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      color: var(--apx-mist);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--apx-grey-deep);
       text-transform: uppercase;
       margin-bottom: var(--sp-3);
     }
     .field__label .req {
-      color: var(--apx-flare);
+      color: var(--apx-lime-deep);
       margin-left: var(--sp-1);
+      font-weight: 700;
     }
     .field__input,
     .field__select,
     .field__textarea {
-      background: var(--apx-void);
-      border: 1px solid var(--apx-wire-strong);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-12);
       border-radius: var(--rad-md);
       padding: 14px 16px;
-      color: var(--apx-bone);
+      color: var(--apx-void);
       font-family: var(--font-body);
       font-size: var(--fs-body-md);
-      transition: border-color 0.2s var(--ease-crisp), background 0.2s var(--ease-crisp);
+      transition: border-color 0.2s var(--ease-crisp), box-shadow 0.2s var(--ease-crisp);
     }
     .field__input:focus,
     .field__select:focus,
     .field__textarea:focus {
       outline: none;
-      border-color: var(--apx-xenon);
-      background: var(--apx-carbon);
+      border-color: var(--apx-lime);
+      box-shadow: 0 0 0 4px var(--apx-lime-glow);
     }
-    .field__textarea {
-      resize: vertical;
-      min-height: 120px;
-      font-family: var(--font-body);
-    }
+    .field__textarea { resize: vertical; min-height: 120px; }
     .field__hint {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--apx-ash);
+      color: var(--apx-grey-mid);
       letter-spacing: 0.08em;
       margin-top: var(--sp-2);
       text-transform: uppercase;
     }
 
+    /* ============================================
+       CHECKBOX TILES - select cards, lime selected state
+       ============================================ */
     .field__checkbox-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -161,39 +173,47 @@
       align-items: flex-start;
       gap: var(--sp-3);
       padding: var(--sp-4);
-      background: var(--apx-void);
-      border: 1px solid var(--apx-wire-strong);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-12);
       border-radius: var(--rad-md);
       cursor: pointer;
       transition: all 0.2s var(--ease-crisp);
     }
     .checkbox-tile:hover {
-      border-color: var(--apx-trace);
-      background: var(--apx-graphite);
+      border-color: var(--apx-lime);
+      background: var(--apx-lime-soft);
+    }
+    .checkbox-tile:has(input:checked) {
+      border-color: var(--apx-lime);
+      background: var(--apx-lime-soft);
+      box-shadow: 0 0 0 1px var(--apx-lime);
     }
     .checkbox-tile input {
       margin-top: 2px;
-      accent-color: var(--apx-xenon);
+      accent-color: var(--apx-lime);
     }
     .checkbox-tile__label {
       font-size: var(--fs-body-sm);
-      color: var(--apx-bone);
-      font-weight: 500;
+      color: var(--apx-void);
+      font-weight: 600;
     }
     .checkbox-tile__sub {
       display: block;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--apx-mist);
-      letter-spacing: 0.08em;
+      color: var(--apx-grey-deep);
+      letter-spacing: 0.10em;
       text-transform: uppercase;
       margin-top: 2px;
     }
 
+    /* ============================================
+       FORM ACTIONS
+       ============================================ */
     .form__actions {
       margin-top: var(--sp-8);
       padding-top: var(--sp-6);
-      border-top: 1px solid var(--apx-wire);
+      border-top: 1px solid var(--apx-ink-08);
       display: flex;
       gap: var(--sp-4);
       align-items: center;
@@ -204,88 +224,84 @@
       min-width: 280px;
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--apx-ash);
-      letter-spacing: 0.06em;
+      color: var(--apx-grey-mid);
+      letter-spacing: 0.08em;
       line-height: 1.6;
       text-transform: uppercase;
     }
 
+    /* ============================================
+       ASIDE CARDS
+       ============================================ */
     .quote-aside {
       position: sticky;
-      top: 120px;
+      top: 110px;
       display: flex;
       flex-direction: column;
       gap: var(--sp-5);
     }
     .aside-card {
-      background: var(--apx-carbon);
-      border: 1px solid var(--apx-wire);
+      background: var(--apx-white);
+      border: 1px solid var(--apx-ink-08);
       border-radius: var(--rad-lg);
       padding: var(--sp-6);
     }
     .aside-card h4 {
       font-family: var(--font-display);
       font-size: 1rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.02em;
       margin-bottom: var(--sp-4);
-      color: var(--apx-bone);
+      color: var(--apx-void);
     }
     .aside-card p,
     .aside-card li {
       font-size: var(--fs-body-sm);
-      color: var(--apx-mist);
-      line-height: 1.6;
+      color: var(--apx-grey-deep);
+      line-height: 1.65;
     }
-    .aside-card ul {
-      list-style: none;
-    }
+    .aside-card ul { list-style: none; }
     .aside-card li {
       padding: var(--sp-2) 0;
       padding-left: var(--sp-5);
       position: relative;
     }
     .aside-card li::before {
-      content: '→';
+      content: '\2192';
       position: absolute;
       left: 0;
       top: var(--sp-2);
-      color: var(--apx-xenon);
+      color: var(--apx-lime-deep);
       font-family: var(--font-mono);
+      font-weight: 600;
     }
     .aside-card--trade {
-      background: linear-gradient(135deg, rgba(0, 229, 200, 0.06), rgba(0, 229, 200, 0.01));
-      border-color: var(--apx-trace);
+      background: linear-gradient(135deg, var(--apx-lime-soft), rgba(245, 248, 199, 0.3));
+      border-color: var(--apx-lime);
     }
-    .aside-card--trade h4 { color: var(--apx-xenon); }
+    .aside-card--trade h4 { color: var(--apx-void); }
 
     .sla-line {
       display: flex;
       justify-content: space-between;
       padding: var(--sp-3) 0;
-      border-bottom: 1px solid var(--apx-wire);
+      border-bottom: 1px solid var(--apx-ink-08);
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      letter-spacing: 0.08em;
+      font-weight: 500;
+      letter-spacing: 0.10em;
       text-transform: uppercase;
     }
     .sla-line:last-child { border-bottom: none; }
-    .sla-line__label { color: var(--apx-mist); }
-    .sla-line__value { color: var(--apx-bone); }
+    .sla-line__label { color: var(--apx-grey-deep); }
+    .sla-line__value { color: var(--apx-void); font-weight: 600; }
 
     @media (max-width: 980px) {
-      .quote-shell {
-        grid-template-columns: 1fr;
-      }
-      .quote-aside {
-        position: static;
-      }
-      .form__row {
-        grid-template-columns: 1fr;
-      }
-      .field__checkbox-group {
-        grid-template-columns: 1fr;
-      }
+      .quote-shell { grid-template-columns: 1fr; }
+      .quote-aside { position: static; }
+      .form__row { grid-template-columns: 1fr; }
+      .field__checkbox-group { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -293,7 +309,7 @@
 
   <nav class="nav">
     <a href="index.html" class="nav__brand">
-      <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
+      <img src="assets/brand/apeax-tagline-dark-grey.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
     </a>
     <div class="nav__links">
       <a href="passenger.html">Passenger</a>
@@ -580,13 +596,12 @@
 
   </div>
 
-  <footer class="footer">
+  <footer class="footer is-dark">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="nav__brand">
-            <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
-          </div>
+          <img src="assets/brand/apeax-tagline-white.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
+          <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
           <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
           <p class="footer__small">
             Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.

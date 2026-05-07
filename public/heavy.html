@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0B0F18">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/favicon-192.png">
-  <link rel="shortcut icon" href="assets/favicon.ico">
-  <title>Heavy · APEAX XTREME Series</title>
+  <meta name="theme-color" content="#CEDC00">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/brand/apeax-icon-dark-grey.png">
+  <title>Heavy Vehicle · APEAX XTREME Series</title>
   <meta name="description" content="German-engineered APEAX XTREME Series films for Australian mass-transit duty. Coach, bus, marine, structural, and aviation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="_shared.css">
-  <script src="assets/js/analytics.js" async></script>
+
   <style>
+    /* ============================================
+       HEAVY HERO - light theme over coach photography
+       ============================================ */
     .hero-heavy {
-      min-height: 85vh;
+      min-height: 88vh;
       padding: 180px var(--gutter) var(--sp-9);
       position: relative;
       overflow: hidden;
@@ -33,15 +35,15 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(11, 15, 24, 0.92) 0%, rgba(11, 15, 24, 0.7) 45%, rgba(11, 15, 24, 0.2) 100%),
-        radial-gradient(ellipse at 20% 80%, rgba(255, 122, 51, 0.08), transparent 60%);
+        linear-gradient(to right, var(--apx-white) 0%, var(--apx-snow-95) 35%, rgba(255, 255, 255, 0.55) 65%, rgba(255, 255, 255, 0.15) 100%),
+        radial-gradient(ellipse at 20% 80%, var(--apx-lime-glow), transparent 55%);
       z-index: 0;
     }
     .hero-heavy::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.02)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><defs><pattern id='grid' width='40' height='40' patternUnits='userSpaceOnUse'><path d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(11,16,20,0.04)' stroke-width='1'/></pattern></defs><rect width='400' height='400' fill='url(%23grid)'/></svg>");
       z-index: 0;
     }
     .hero-heavy__inner {
@@ -64,91 +66,138 @@
       gap: var(--sp-8);
       margin-top: var(--sp-8);
       padding-top: var(--sp-6);
-      border-top: 1px solid var(--apx-wire);
+      border-top: 1px solid var(--apx-ink-08);
       flex-wrap: wrap;
     }
-    .stat__value-warm {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--apx-flare);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-    .stat__label {
-      font-family: var(--font-mono);
-      font-size: var(--fs-mono);
-      color: var(--apx-mist);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      margin-top: var(--sp-2);
-    }
-    .eyebrow--heavy::before { background: var(--apx-flare); }
+
+    /* ============================================
+       BACK LINK
+       ============================================ */
     .back-link {
       position: absolute;
-      top: 120px;
+      top: 110px;
       left: var(--gutter);
       font-family: var(--font-mono);
       font-size: var(--fs-mono);
-      color: var(--apx-mist);
+      color: var(--apx-grey-deep);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       z-index: 2;
+      padding: 8px 14px;
+      border-radius: var(--rad-pill);
+      background: var(--apx-snow-95);
+      border: 1px solid var(--apx-ink-08);
+      transition: all 0.2s var(--ease-crisp);
     }
-    .back-link:hover { color: var(--apx-flare); }
+    .back-link:hover {
+      color: var(--apx-void);
+      border-color: var(--apx-lime);
+      background: var(--apx-white);
+    }
 
+    /* ============================================
+       SECTOR GRID - 5 columns, lime accent on hover
+       ============================================ */
     .sectors {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 1px;
-      background: var(--apx-wire);
+      gap: 0;
+      background: var(--apx-ink-08);
       margin: var(--sp-8) 0;
-      border-top: 1px solid var(--apx-wire);
-      border-bottom: 1px solid var(--apx-wire);
+      border: 1px solid var(--apx-ink-08);
+      border-radius: var(--rad-lg);
+      overflow: hidden;
     }
     .sector {
-      background: var(--apx-void);
+      background: var(--apx-white);
       padding: var(--sp-6);
       text-align: center;
       transition: all 0.3s var(--ease-out);
       cursor: pointer;
+      border: 1px solid transparent;
     }
     .sector:hover {
-      background: var(--apx-carbon);
+      background: var(--apx-light);
+      border-color: var(--apx-lime);
     }
     .sector__num {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      color: var(--apx-ash);
-      letter-spacing: 0.14em;
+      color: var(--apx-grey-mid);
+      letter-spacing: 0.16em;
       margin-bottom: var(--sp-3);
+      font-weight: 500;
     }
     .sector__name {
       font-family: var(--font-display);
       font-size: 1.1rem;
       text-transform: uppercase;
-      color: var(--apx-bone);
-      font-weight: 900;
+      color: var(--apx-void);
+      font-weight: 800;
       letter-spacing: -0.01em;
     }
     .sector__desc {
-      font-size: 0.75rem;
-      color: var(--apx-mist);
+      font-size: 0.8rem;
+      color: var(--apx-grey-deep);
       margin-top: var(--sp-2);
+      line-height: 1.5;
     }
     @media (max-width: 900px) {
       .sectors { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* ============================================
+       FLEET ECONOMICS PANEL
+       ============================================ */
+    .fleet-table {
+      background: var(--apx-light);
+      border: 1px solid var(--apx-ink-08);
+      border-radius: var(--rad-lg);
+      padding: var(--sp-7);
+    }
+    .fleet-table__title {
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+      color: var(--apx-grey-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: var(--sp-5);
+      font-weight: 500;
+    }
+    .fleet-table table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: var(--fs-mono);
+    }
+    .fleet-table tr { border-bottom: 1px solid var(--apx-ink-08); }
+    .fleet-table tr:last-child { border-bottom: none; }
+    .fleet-table td {
+      padding: var(--sp-4) 0;
+      vertical-align: middle;
+    }
+    .fleet-table td:first-child {
+      color: var(--apx-grey-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+    }
+    .fleet-table td:last-child {
+      color: var(--apx-void);
+      text-align: right;
+      font-weight: 500;
+    }
+    .fleet-table .accent { color: var(--apx-lime-deep); font-weight: 600; }
   </style>
 </head>
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="nav__brand">
-      <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
+    <a href="index.html" class="nav__brand" aria-label="APEAX Australia home">
+      <img src="assets/brand/apeax-tagline-dark-grey.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
     </a>
     <div class="nav__links">
-      <a href="passenger.html">Passenger</a>
+      <a href="passenger.html">Light</a>
       <a href="heavy.html" class="is-active">Heavy</a>
       <a href="warranty.html">Warranty</a>
       <a href="mailto:shield@asi-australia.com.au">Contact</a>
@@ -156,43 +205,42 @@
     </div>
   </nav>
 
-  <a href="index.html" class="back-link">← Back to Gate</a>
+  <a href="index.html" class="back-link">&larr; Back to Gate</a>
 
   <header class="hero-heavy">
     <div class="hero-heavy__inner">
-      <img src="assets/brand/xtremeserieslogo_white1.png" alt="APEAX XTREME Series" style="height:56px;width:auto;margin-bottom:var(--sp-5);display:block;">
-      <p class="eyebrow eyebrow--heavy">02 / Heavy · Mass-Transit & Structural</p>
+      <p class="eyebrow">02 / Heavy &middot; Mass-Transit &amp; Structural</p>
       <h1 class="h-xl hero-heavy__headline">Built for the schedule.</h1>
       <p class="lead hero-heavy__lead">
-        German-engineered films designed specifically for Australian mass-transit duty and UV
-        conditions. The films that keep the fleet in service, the windows clear, and the
-        warranty honest across a decade of regional routes.
+        German-engineered films designed specifically for Australian mass-transit duty
+        and UV conditions. The films that keep the fleet in service, the windows clear,
+        and the warranty honest across a decade of regional routes.
       </p>
       <div style="display: flex; gap: var(--sp-4); flex-wrap: wrap;">
-        <a href="optishield-hv.html" class="btn btn--warm">
+        <a href="optishield-hv.html" class="btn btn--primary">
           Explore the Heavy Range
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
         <a href="#quote" class="btn btn--ghost">
           Request Fleet Quote
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
       </div>
       <div class="hero-heavy__stats">
         <div>
-          <div class="stat__value-warm">99<span style="color: var(--apx-bone); font-size: 0.5em;">%</span></div>
+          <div class="stat__value">99<span style="color: var(--apx-grey-mid); font-size: 0.5em;">%</span></div>
           <div class="stat__label">UV Block</div>
         </div>
         <div>
-          <div class="stat__value-warm">10<span style="color: var(--apx-bone); font-size: 0.5em;">yr</span></div>
+          <div class="stat__value">10<span style="color: var(--apx-grey-mid); font-size: 0.5em;">yr</span></div>
           <div class="stat__label">Structural Warranty</div>
         </div>
         <div>
-          <div class="stat__value-warm">14+1</div>
+          <div class="stat__value">14+1</div>
           <div class="stat__label">Panes Per Coach</div>
         </div>
         <div>
-          <div class="stat__value-warm">RF<span style="color: var(--apx-bone); font-size: 0.5em;"> Safe</span></div>
+          <div class="stat__value">RF<span style="color: var(--apx-grey-mid); font-size: 0.5em;"> Safe</span></div>
           <div class="stat__label">Non-Metallic</div>
         </div>
       </div>
@@ -204,7 +252,7 @@
       <div class="sectors">
         <div class="sector">
           <div class="sector__num">01</div>
-          <div class="sector__name">Coach & Bus</div>
+          <div class="sector__name">Coach &amp; Bus</div>
           <div class="sector__desc">Side glazing, windscreen, rear glass</div>
         </div>
         <div class="sector">
@@ -233,18 +281,18 @@
 
   <section id="products" class="container">
     <div class="section-header">
-      <img src="assets/brand/xtremeserieslogo_white1.png" alt="XTREME Series" style="height:44px;width:auto;margin-bottom:var(--sp-4);display:block;">
-      <p class="eyebrow eyebrow--heavy">The Range</p>
+      <p class="eyebrow">The Range</p>
       <h2 class="h-lg" style="max-width: 18ch;">Four films. One mission.</h2>
       <p class="lead" style="margin-top: var(--sp-5);">
-        The XTREME Series is APEAX's heavy-duty family, engineered for the surfaces that take
-        the most abuse. Public RRP shown, trade discount available on installer login.
+        The XTREME Series is APEAX's heavy-duty family, engineered for the surfaces
+        that take the most abuse. Public RRP shown, trade discount available on
+        installer login.
       </p>
     </div>
 
     <div class="card-grid">
 
-      <article class="card card--warm">
+      <article class="card">
         <div class="card__sku">APX-HV-OPTISHIELD-XT</div>
         <img src="assets/brand/Golden X Optishield Logo.png" alt="XTREME OptiShield" class="card__logo">
         <h3 class="card__title">XTREME OptiShield</h3>
@@ -258,149 +306,147 @@
           <span class="card__spec">Refreshable</span>
           <span class="card__spec">RF Safe</span>
         </div>
-        <a href="optishield-hv.html" class="card__cta">View Full Spec <span>→</span></a>
+        <a href="optishield-hv.html" class="card__cta">View Full Spec <span>&rarr;</span></a>
       </article>
 
-      <article class="card card--warm">
+      <article class="card">
         <div class="card__sku">APX-HV-CLEARSHIELD-XT</div>
-        <img src="assets/products/clearshield/clearshield-logo-white.png" alt="XTREME ClearShield" class="card__logo">
+        <img src="assets/products/clearshield/clearshield-logo-dark.png" alt="XTREME ClearShield" class="card__logo">
         <h3 class="card__title">XTREME ClearShield</h3>
         <p class="card__desc">
-          High-clarity external film for side glazing and optical lenses. Anti-scratch hardcoat,
-          minimal optical distortion, matched to OptiShield for mixed-surface fleets.
+          High-clarity external film for side glazing and optical lenses. Anti-scratch
+          hardcoat, minimal optical distortion, matched to OptiShield for mixed-surface
+          fleets.
         </p>
         <div class="card__specs">
           <span class="card__spec">External</span>
           <span class="card__spec">7yr Warranty</span>
           <span class="card__spec">Anti-Scratch</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
-      <article class="card card--warm">
+      <article class="card">
         <div class="card__sku">APX-HV-GRAFSHIELD-XT</div>
         <img src="assets/brand/Golden X Grafshield Logo.png" alt="XTREME GrafShield" class="card__logo">
         <h3 class="card__title">XTREME GrafShield</h3>
         <p class="card__desc">
-          Internal anti-tag, anti-etch sacrificial film. Solvent-resistant hardcoat, peel-and-replace
-          workflow in the depot, zero downtime on the route.
+          Internal anti-tag, anti-etch sacrificial film. Solvent-resistant hardcoat,
+          peel-and-replace workflow in the depot, zero downtime on the route.
         </p>
         <div class="card__specs">
           <span class="card__spec">Internal</span>
           <span class="card__spec">Sacrificial</span>
           <span class="card__spec">Solvent Resistant</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
-      <article class="card card--warm">
+      <article class="card">
         <div class="card__sku">APX-HV-PAINTSHIELD-XT</div>
         <img src="assets/brand/paintshield_goldX_transparent.png" alt="XTREME PaintShield" class="card__logo">
         <h3 class="card__title">XTREME PaintShield</h3>
         <p class="card__desc">
-          Self-healing PPF for painted surfaces on coaches, trailers, hulls, and architectural panels.
-          Chip and stain defence engineered for the distance.
+          Self-healing PPF for painted surfaces on coaches, trailers, hulls, and
+          architectural panels. Chip and stain defence engineered for the distance.
         </p>
         <div class="card__specs">
           <span class="card__spec">External</span>
           <span class="card__spec">Self-Healing</span>
           <span class="card__spec">10yr Warranty</span>
         </div>
-        <a href="#" class="card__cta">View Spec Sheet <span>→</span></a>
+        <a href="#" class="card__cta">View Spec Sheet <span>&rarr;</span></a>
       </article>
 
     </div>
   </section>
 
-  <section id="fleet">
+  <section id="fleet" class="section--light-grey">
     <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-9); align-items: center;">
       <div>
-        <p class="eyebrow eyebrow--heavy">Fleet Economics</p>
+        <p class="eyebrow">Fleet Economics</p>
         <h2 class="h-md" style="margin-bottom: var(--sp-5);">Built around the coach module.</h2>
         <p class="lead" style="margin-bottom: var(--sp-6);">
-          The XTREME Heavy range is specified against a standard coach module of 14 side panes
-          at 1.55 × 0.91 metres, plus one rear pane and a standard windscreen. Waste allowances,
-          safety stock, and fleet pricing bands are built around that reality, so quotes come
-          back in hours, not weeks.
+          The XTREME Heavy range is specified against a standard coach module of 14
+          side panes at 1.55 &times; 0.91 metres, plus one rear pane and a standard
+          windscreen. Waste allowances, safety stock, and fleet pricing bands are
+          built around that reality, so quotes come back in hours, not weeks.
         </p>
         <div style="display: flex; gap: var(--sp-6); flex-wrap: wrap;">
-          <a href="#quote" class="btn btn--warm">
+          <a href="#quote" class="btn btn--primary">
             Request Fleet Pricing
-            <span class="btn__arrow">→</span>
+            <span class="btn__arrow">&rarr;</span>
           </a>
         </div>
       </div>
-      <div>
-        <div style="background: var(--apx-carbon); border: 1px solid var(--apx-wire); border-radius: var(--rad-lg); padding: var(--sp-7);">
-          <div class="mono" style="font-size: var(--fs-mono); color: var(--apx-ash); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: var(--sp-5);">Indicative Coverage · Single Coach</div>
-          <table style="width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: var(--fs-mono);">
-            <tr style="border-bottom: 1px solid var(--apx-wire);">
-              <td style="padding: var(--sp-4) 0; color: var(--apx-mist); text-transform: uppercase; letter-spacing: 0.1em;">Side Panes</td>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-bone); text-align: right;">14 × (1.55 × 0.91m)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--apx-wire);">
-              <td style="padding: var(--sp-4) 0; color: var(--apx-mist); text-transform: uppercase; letter-spacing: 0.1em;">Rear Pane</td>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-bone); text-align: right;">1 × (2.10 × 1.20m)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--apx-wire);">
-              <td style="padding: var(--sp-4) 0; color: var(--apx-mist); text-transform: uppercase; letter-spacing: 0.1em;">Windscreen</td>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-bone); text-align: right;">1 × (2.20 × 3.90m)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--apx-wire);">
-              <td style="padding: var(--sp-4) 0; color: var(--apx-mist); text-transform: uppercase; letter-spacing: 0.1em;">Waste Allowance</td>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-flare); text-align: right;">8% rectangular, 12% complex</td>
-            </tr>
-            <tr>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-mist); text-transform: uppercase; letter-spacing: 0.1em;">Safety Stock</td>
-              <td style="padding: var(--sp-4) 0; color: var(--apx-flare); text-align: right;">+1 roll per 10 coaches</td>
-            </tr>
-          </table>
-        </div>
+      <div class="fleet-table">
+        <div class="fleet-table__title">Indicative Coverage &middot; Single Coach</div>
+        <table>
+          <tr>
+            <td>Side Panes</td>
+            <td>14 &times; (1.55 &times; 0.91m)</td>
+          </tr>
+          <tr>
+            <td>Rear Pane</td>
+            <td>1 &times; (2.10 &times; 1.20m)</td>
+          </tr>
+          <tr>
+            <td>Windscreen</td>
+            <td>1 &times; (2.20 &times; 3.90m)</td>
+          </tr>
+          <tr>
+            <td>Waste Allowance</td>
+            <td class="accent">8% rectangular, 12% complex</td>
+          </tr>
+          <tr>
+            <td>Safety Stock</td>
+            <td class="accent">+1 roll per 10 coaches</td>
+          </tr>
+        </table>
       </div>
     </div>
   </section>
 
   <section id="quote">
     <div class="container" style="text-align: center;">
-      <p class="eyebrow eyebrow--heavy" style="justify-content: center;">Trade Enquiries</p>
+      <p class="eyebrow" style="justify-content: center;">Trade Enquiries</p>
       <h2 class="h-lg" style="max-width: 22ch; margin: 0 auto var(--sp-5);">
         The fleet doesn't wait. Neither do we.
       </h2>
       <p class="lead" style="margin: 0 auto var(--sp-7);">
-        Direct procurement from Australia's exclusive APEAX distributor. Trade pricing bands
-        for vetted installers. 48 hour quote response, honest lead times, ISO-traced delivery.
+        Direct procurement from Australia's exclusive APEAX distributor. Trade pricing
+        bands for vetted installers. 48 hour quote response, honest lead times,
+        ISO-traced delivery.
       </p>
       <div style="display: flex; gap: var(--sp-4); justify-content: center; flex-wrap: wrap;">
-        <a href="trade/apply.html" class="btn btn--warm">
+        <a href="trade/apply.html" class="btn btn--primary">
           Apply for Trade Account
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
         <a href="quote.html" class="btn btn--ghost">
           Request Fleet Audit
-          <span class="btn__arrow">→</span>
+          <span class="btn__arrow">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer is-dark">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="nav__brand">
-            <img src="assets/brand/apeax-lockup-light.png" alt="APEAX Australia" class="nav__brand-mark">
-          </div>
+          <img src="assets/brand/apeax-tagline-white.png" alt="APEAX · Surface Protection" class="nav__brand-mark">
           <h3 class="footer__tagline">Protecting what <span>moves</span> Australia.</h3>
           <p class="footer__small">
-            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution Division.
-            Australia's exclusive APEAX distributor.
+            Advanced Surface Innovations Pty Ltd trading as the APEAX Distribution
+            Division. Australia's exclusive APEAX distributor.
           </p>
         </div>
         <div class="footer__col">
           <h4>Range</h4>
           <ul>
-            <li><a href="passenger.html">Passenger</a></li>
-            <li><a href="heavy.html">Heavy</a></li>
+            <li><a href="passenger.html">Light Vehicle</a></li>
+            <li><a href="heavy.html">Heavy Vehicle</a></li>
             <li><a href="#">Marine</a></li>
             <li><a href="#">Structural</a></li>
           </ul>
@@ -425,11 +471,12 @@
         </div>
       </div>
       <div class="footer__strip">
-        <div>© 2026 ASI Distribution Division · ABN [ASI]</div>
-        <div>ISO 9001 · 14001 · 45001 · <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
+        <div>&copy; 2026 ASI Distribution Division &middot; ABN 30 691 799 970</div>
+        <div>ISO 9001 &middot; 14001 &middot; 45001 &middot; <a href="mailto:shield@asi-australia.com.au">shield@asi-australia.com.au</a></div>
       </div>
     </div>
   </footer>
 
+  <script src="assets/js/analytics.js" async></script>
 </body>
 </html>

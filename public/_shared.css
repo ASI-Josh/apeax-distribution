@@ -1,70 +1,118 @@
 /* ============================================
-   APEAX DISTRIBUTION PORTAL · SHARED STYLES
-   Design System v2.0 · 2026-04-19
-   Monochrome inverse-pair per BRAND-DECISIONS.md v1.0 (LOCKED).
-   Token names preserved for backwards-compat; values replaced.
+   APEAX DISTRIBUTION PORTAL - SHARED STYLES
+   Design System v3.0 - 2026-05-07
+   Aligned to APEAX-STYLEGUIDE-V.2
+   60-30-10 light-dominant, lime accent (#CEDC00)
+   Display: Sora (Aktiv Grotesk Ex equivalent, free)
+   Body: Manrope (Avenir Next equivalent, free)
+   Supersedes v2.0 Monochrome (2026-04-19) per DIRECTOR call A.
    ============================================ */
 
 :root {
-  /* MONOCHROME PRIMARIES — source: BRAND-DECISIONS.md §2 */
-  --apx-dark:       #1E2531;   /* Primary dark, matches logo stroke */
-  --apx-dark-bg:    #0B0F18;   /* Hero / dark-state background */
-  --apx-light:      #FFFFFF;   /* Primary light */
-  --apx-light-bg:   #FAFBFC;   /* Light-state gentle tint */
+  /* ============================================
+     PALETTE - V.2 STYLEGUIDE
+     ============================================ */
 
-  /* DERIVED GREYSCALE — opacity of --apx-dark on light bg */
-  --apx-grey-95:    rgba(30, 37, 49, 0.95);
-  --apx-grey-70:    rgba(30, 37, 49, 0.70);
-  --apx-grey-50:    rgba(30, 37, 49, 0.50);
-  --apx-grey-30:    rgba(30, 37, 49, 0.30);
-  --apx-grey-12:    rgba(30, 37, 49, 0.12);
+  /* DOMINANT 60% - whites and light greys */
+  --apx-white:        #FFFFFF;
+  --apx-light:        #EBEBEB;   /* V.2 light grey 1, surface elevations */
+  --apx-fog:          #DBDEE1;   /* V.2 light grey 2, hover/raised states */
+  /* legacy --apx-mist is body-secondary text colour and is aliased
+     in the LEGACY ALIASES block further down to keep older pages legible. */
 
-  /* INVERSE GREYSCALE — opacity of white on dark bg */
-  --apx-light-70:   rgba(255, 255, 255, 0.70);
-  --apx-light-50:   rgba(255, 255, 255, 0.50);
-  --apx-light-30:   rgba(255, 255, 255, 0.30);
-  --apx-light-12:   rgba(255, 255, 255, 0.12);
+  /* MID 30% - dark grey scale, body and structure */
+  --apx-grey-soft:    #9CA3A8;
+  --apx-grey-mid:     #6B7379;
+  --apx-grey-deep:    #52595F;
+  --apx-graphite:     #3D454D;   /* V.2 secondary "30%" colour */
+  --apx-charcoal:     #2E3036;
+  --apx-void:         #0B1014;   /* near-black, used sparingly */
+  --apx-black:        #000000;   /* only logos and edge moments */
 
-  /* FUNCTIONAL — form states only, no brand intent */
-  --apx-success:    #22C55E;
-  --apx-error:      #EF4444;
+  /* ACCENT 10% - lime, the brand's pop */
+  --apx-lime:         #CEDC00;   /* V.2 accent */
+  --apx-lime-deep:    #B5C200;   /* hover */
+  --apx-lime-soft:    #F5F8C7;   /* lightest tint for callout backgrounds */
+  --apx-lime-glow:    rgba(206, 220, 0, 0.28);
+  --apx-lime-line:    rgba(206, 220, 0, 0.5);
 
-  /* LEGACY TOKEN ALIASES — preserved so existing markup keeps working */
-  --apx-void:       #0B0F18;                   /* was deepest bg, now = dark-bg */
-  --apx-carbon:     #121821;                   /* card/elevated dark surface */
-  --apx-graphite:   #1E2531;                   /* = primary dark */
-  --apx-slate:      #242D3F;                   /* slight lift for nav, dividers */
-  --apx-bone:       #FFFFFF;                   /* = primary light */
-  --apx-mist:       rgba(255, 255, 255, 0.70); /* body-copy on dark */
-  --apx-ash:        rgba(255, 255, 255, 0.50); /* captions on dark */
-  --apx-xenon:      #FFFFFF;                   /* former cyan, now monochrome white */
-  --apx-xenon-dim:  rgba(255, 255, 255, 0.70);
-  --apx-flare:      #FFFFFF;                   /* former amber, now monochrome white */
-  --apx-flare-dim:  rgba(255, 255, 255, 0.70);
-  --apx-verdigris:  #22C55E;                   /* retained for success states only */
-  --apx-ember:      #FFFFFF;                   /* collapsed to monochrome */
-  --apx-crimson:    #EF4444;                   /* retained for error states only */
-  --apx-wire:       rgba(255, 255, 255, 0.08);
-  --apx-wire-strong:rgba(255, 255, 255, 0.14);
-  --apx-trace:      rgba(255, 255, 255, 0.4);
-  --apx-trace-warm: rgba(255, 255, 255, 0.4);
+  /* FUNCTIONAL - states only, never as brand colour */
+  --apx-success:      #22C55E;
+  --apx-error:        #EF4444;
+  --apx-warn:         #F59E0B;
 
-  /* TYPE — unchanged per BRAND-DECISIONS §4 */
-  --font-display: 'Archivo', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  /* DERIVED OVERLAYS */
+  --apx-ink-95:       rgba(11, 16, 20, 0.95);
+  --apx-ink-70:       rgba(11, 16, 20, 0.70);
+  --apx-ink-50:       rgba(11, 16, 20, 0.50);
+  --apx-ink-30:       rgba(11, 16, 20, 0.30);
+  --apx-ink-12:       rgba(11, 16, 20, 0.12);
+  --apx-ink-08:       rgba(11, 16, 20, 0.08);
+  --apx-ink-04:       rgba(11, 16, 20, 0.04);
+
+  --apx-snow-95:      rgba(255, 255, 255, 0.95);
+  --apx-snow-70:      rgba(255, 255, 255, 0.70);
+  --apx-snow-50:      rgba(255, 255, 255, 0.50);
+  --apx-snow-30:      rgba(255, 255, 255, 0.30);
+  --apx-snow-12:      rgba(255, 255, 255, 0.12);
+  --apx-snow-08:      rgba(255, 255, 255, 0.08);
+
+  /* ============================================
+     LEGACY ALIASES - keep existing markup working
+     while pages are progressively refactored.
+     Eventually deprecated in favour of semantic tokens.
+     ============================================ */
+  --apx-dark:         var(--apx-charcoal);
+  --apx-dark-bg:      var(--apx-void);
+  --apx-light-bg:     var(--apx-light);
+  --apx-bone:         var(--apx-charcoal);   /* primary ink, now charcoal on light */
+  --apx-carbon:       var(--apx-light);      /* card surfaces, was dark, now light */
+  --apx-graphite-legacy: var(--apx-charcoal);
+  --apx-slate:        var(--apx-mist);
+  --apx-xenon:        var(--apx-lime);       /* primary accent now lime */
+  --apx-xenon-dim:    var(--apx-lime-deep);
+  --apx-flare:        var(--apx-lime);       /* secondary accent collapsed to lime */
+  --apx-flare-dim:    var(--apx-lime-deep);
+  --apx-verdigris:    var(--apx-success);
+  --apx-ember:        var(--apx-warn);
+  --apx-crimson:      var(--apx-error);
+  --apx-mist:         var(--apx-grey-mid);   /* secondary text on light bg */
+  --apx-mist-legacy:  var(--apx-grey-mid);
+  --apx-ash:          var(--apx-grey-soft);
+  --apx-wire:         var(--apx-ink-08);
+  --apx-wire-strong:  var(--apx-ink-12);
+  --apx-trace:        var(--apx-lime-glow);
+  --apx-trace-warm:   var(--apx-lime-glow);
+  --apx-light-70:     var(--apx-ink-70);
+  --apx-light-50:     var(--apx-ink-50);
+  --apx-light-30:     var(--apx-ink-30);
+  --apx-light-12:     var(--apx-ink-12);
+  --apx-grey-95:      var(--apx-ink-95);
+  --apx-grey-70:      var(--apx-ink-70);
+  --apx-grey-50:      var(--apx-ink-50);
+  --apx-grey-30:      var(--apx-ink-30);
+  --apx-grey-12:      var(--apx-ink-12);
+
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body:    'Manrope', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
   --fs-display-xl: clamp(3.5rem, 10vw, 8rem);
   --fs-display-lg: clamp(2.5rem, 6vw, 5rem);
   --fs-display-md: clamp(1.75rem, 3.5vw, 3.5rem);
   --fs-display-sm: clamp(1.5rem, 2.25vw, 2.25rem);
-  --fs-body-xl: 1.25rem;
-  --fs-body-lg: 1.125rem;
-  --fs-body-md: 1rem;
-  --fs-body-sm: 0.875rem;
-  --fs-mono: 0.8125rem;
+  --fs-body-xl:    1.25rem;
+  --fs-body-lg:    1.125rem;
+  --fs-body-md:    1rem;
+  --fs-body-sm:    0.875rem;
+  --fs-mono:       0.8125rem;
 
-  /* SPACE */
+  /* ============================================
+     SPACE / RADII / LAYOUT / MOTION
+     ============================================ */
   --sp-1: 4px;
   --sp-2: 8px;
   --sp-3: 12px;
@@ -76,23 +124,23 @@
   --sp-9: 96px;
   --sp-10: 128px;
 
-  /* RADII */
   --rad-sm: 2px;
   --rad-md: 6px;
   --rad-lg: 12px;
   --rad-xl: 20px;
   --rad-pill: 999px;
 
-  /* LAYOUT */
   --container: 1440px;
   --gutter: 32px;
 
-  /* MOTION */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
-  --ease-crisp: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-crisp:  cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ============================================
+   RESET
+   ============================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -104,12 +152,14 @@ html {
 }
 
 html, body {
-  background: var(--apx-dark-bg);
-  color: var(--apx-light);
+  background: var(--apx-white);
+  color: var(--apx-charcoal);
   font-family: var(--font-body);
   font-size: var(--fs-body-md);
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 
@@ -123,7 +173,10 @@ a {
   transition: color 0.2s var(--ease-crisp);
 }
 
-img, svg { display: block; max-width: 100%; }
+img, svg {
+  display: block;
+  max-width: 100%;
+}
 
 button {
   font-family: inherit;
@@ -133,8 +186,20 @@ button {
   color: inherit;
 }
 
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--apx-lime);
+  color: var(--apx-void);
+}
+
 /* ============================================
-   SHARED NAV
+   NAV - light theme, dark logo, charcoal links
+   Lime fills the trade login pill on hover.
    ============================================ */
 
 .nav {
@@ -143,61 +208,79 @@ button {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 20px var(--gutter);
+  padding: 18px var(--gutter);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(180deg, rgba(11, 15, 24, 0.9), rgba(11, 15, 24, 0.6) 70%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--apx-wire);
+  background: var(--apx-snow-95);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid var(--apx-ink-08);
 }
 
 .nav__brand {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 1.25rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--apx-light);
   display: flex;
   align-items: center;
   gap: var(--sp-3);
+  text-transform: uppercase;
+  color: var(--apx-charcoal);
 }
 
 .nav__brand-mark {
   display: block;
-  height: 120px;
+  height: 36px;
   width: auto;
-  max-width: 360px;
+  max-width: 220px;
   object-fit: contain;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  transition: opacity 0.2s var(--ease-crisp);
 }
+.nav__brand:hover .nav__brand-mark { opacity: 0.7; }
 
 .nav__links {
   display: flex;
   gap: var(--sp-6);
   align-items: center;
+  font-family: var(--font-body);
   font-size: var(--fs-body-sm);
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  font-weight: 500;
 }
 
-.nav__links a { color: var(--apx-light-70); }
-.nav__links a:hover { color: var(--apx-light); }
-.nav__links a.is-active { color: var(--apx-light); }
+.nav__links a {
+  color: var(--apx-grey-deep);
+  position: relative;
+  padding: 4px 0;
+}
+.nav__links a:hover { color: var(--apx-charcoal); }
+.nav__links a.is-active {
+  color: var(--apx-charcoal);
+}
+.nav__links a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: var(--apx-lime);
+  border-radius: var(--rad-sm);
+}
 
 .nav__cta {
-  padding: 10px 20px;
-  border: 1px solid var(--apx-light);
-  color: var(--apx-light) !important;
+  padding: 10px 22px;
+  background: var(--apx-charcoal);
+  border: 1px solid var(--apx-charcoal);
+  color: var(--apx-white) !important;
   border-radius: var(--rad-pill);
   transition: all 0.25s var(--ease-crisp);
+  letter-spacing: 0.08em;
 }
 .nav__cta:hover {
-  background: var(--apx-light);
-  color: var(--apx-dark-bg) !important;
+  background: var(--apx-lime);
+  border-color: var(--apx-lime);
+  color: var(--apx-void) !important;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
@@ -207,7 +290,6 @@ button {
 /* ============================================
    CONTAINER
    ============================================ */
-
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -215,83 +297,107 @@ button {
 }
 
 /* ============================================
-   BUTTONS — inverse-pair hover semantics
+   BUTTONS
+   Primary: lime fill, charcoal text - the brand's iconic CTA
+   Outline: charcoal stroke + text, fills charcoal on hover
+   Warm: alias of primary (legacy markup compat)
+   Ghost: low-emphasis, lime hover
    ============================================ */
-
 .btn {
   display: inline-flex;
   align-items: center;
   gap: var(--sp-3);
   padding: 16px 32px;
+  font-family: var(--font-body);
   font-size: var(--fs-body-sm);
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   border-radius: var(--rad-pill);
   transition: all 0.3s var(--ease-crisp);
   cursor: pointer;
   border: 1px solid transparent;
-  font-family: var(--font-body);
+  white-space: nowrap;
 }
 
-/* Primary: white fill, dark text. Hover inverts to dark fill, white text. */
 .btn--primary {
-  background: var(--apx-light);
-  color: var(--apx-dark-bg);
+  background: var(--apx-lime);
+  color: var(--apx-void);
+  border-color: var(--apx-lime);
+  box-shadow: 0 4px 18px rgba(206, 220, 0, 0.25);
 }
 .btn--primary:hover {
-  background: var(--apx-dark);
-  color: var(--apx-light);
-  transform: translateX(4px);
+  background: var(--apx-lime-deep);
+  border-color: var(--apx-lime-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(206, 220, 0, 0.35);
 }
 
-/* Outline on dark bg: white stroke + white text, hover fills white. */
 .btn--outline {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--apx-light);
-  color: var(--apx-light);
+  background: transparent;
+  border-color: var(--apx-charcoal);
+  color: var(--apx-charcoal);
 }
 .btn--outline:hover {
-  background: var(--apx-light);
-  color: var(--apx-dark-bg);
-  transform: translateX(4px);
+  background: var(--apx-charcoal);
+  color: var(--apx-white);
+  transform: translateY(-2px);
 }
 
-/* Warm variant collapsed to same as outline — no amber in monochrome. */
+/* legacy "warm" variant - now the primary lime CTA so existing
+   markup like btn--warm on heavy.html stays consistent */
 .btn--warm {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--apx-light);
-  color: var(--apx-light);
+  background: var(--apx-lime);
+  color: var(--apx-void);
+  border-color: var(--apx-lime);
+  box-shadow: 0 4px 18px rgba(206, 220, 0, 0.25);
 }
 .btn--warm:hover {
-  background: var(--apx-light);
-  color: var(--apx-dark-bg);
+  background: var(--apx-lime-deep);
+  border-color: var(--apx-lime-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(206, 220, 0, 0.35);
 }
 
 .btn--ghost {
-  color: var(--apx-light-70);
-  border-color: var(--apx-wire-strong);
+  color: var(--apx-grey-deep);
+  border-color: var(--apx-ink-12);
+  background: transparent;
 }
 .btn--ghost:hover {
-  color: var(--apx-light);
-  border-color: var(--apx-light);
+  color: var(--apx-void);
+  border-color: var(--apx-charcoal);
+  background: var(--apx-light);
+}
+
+/* On dark sections, invert primary so it stays readable */
+.is-dark .btn--outline {
+  border-color: var(--apx-white);
+  color: var(--apx-white);
+}
+.is-dark .btn--outline:hover {
+  background: var(--apx-white);
+  color: var(--apx-void);
 }
 
 .btn__arrow {
   font-family: var(--font-mono);
   font-weight: 500;
+  transition: transform 0.25s var(--ease-crisp);
 }
+.btn:hover .btn__arrow { transform: translateX(4px); }
 
 /* ============================================
-   EYEBROW / META LINE
+   EYEBROW - the lime accent that recurs sitewide.
+   This is the "brand memory" piece.
    ============================================ */
-
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--apx-light-70);
+  color: var(--apx-grey-deep);
   display: inline-flex;
   align-items: center;
   gap: var(--sp-3);
@@ -300,53 +406,76 @@ button {
 .eyebrow::before {
   content: '';
   width: 32px;
-  height: 1px;
-  background: var(--apx-light);
+  height: 4px;
+  background: var(--apx-lime);
+  border-radius: var(--rad-sm);
+  flex-shrink: 0;
 }
-.eyebrow--warm::before { background: var(--apx-light); }
+.eyebrow--heavy::before { background: var(--apx-lime); } /* legacy alias */
+.eyebrow--warm::before { background: var(--apx-lime); }
+
+.is-dark .eyebrow { color: var(--apx-snow-70); }
 
 /* ============================================
-   HEADLINES
+   HEADLINES - Sora, the V.2 display face
    ============================================ */
-
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  color: var(--apx-light);
-  font-weight: 900;
+  color: var(--apx-void);
+  font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1;
   text-transform: uppercase;
 }
 
-.h-xl { font-size: var(--fs-display-xl); line-height: 0.88; letter-spacing: -0.03em; }
-.h-lg { font-size: var(--fs-display-lg); line-height: 0.95; }
-.h-md { font-size: var(--fs-display-md); line-height: 1.05; }
-.h-sm { font-size: var(--fs-display-sm); line-height: 1.1; }
+.h-xl { font-size: var(--fs-display-xl); line-height: 0.88; letter-spacing: -0.035em; font-weight: 800; }
+.h-lg { font-size: var(--fs-display-lg); line-height: 0.95; font-weight: 800; }
+.h-md { font-size: var(--fs-display-md); line-height: 1.05; font-weight: 700; }
+.h-sm { font-size: var(--fs-display-sm); line-height: 1.1; font-weight: 700; }
 
+.is-dark h1, .is-dark h2, .is-dark h3, .is-dark h4 { color: var(--apx-white); }
+
+/* Lead paragraphs - Manrope light, generous line height */
 .lead {
+  font-family: var(--font-body);
+  font-weight: 300;
   font-size: var(--fs-body-xl);
-  line-height: 1.55;
-  color: var(--apx-light-70);
+  line-height: 1.6;
+  color: var(--apx-grey-deep);
   max-width: 60ch;
 }
+.is-dark .lead { color: var(--apx-snow-70); }
 
 /* ============================================
    SECTION
    ============================================ */
-
 section {
   padding: var(--sp-10) 0 var(--sp-9);
   position: relative;
 }
 
-.section-header {
-  margin-bottom: var(--sp-9);
+.section-header { margin-bottom: var(--sp-9); }
+
+/* Dark section moment - rare, used for trade-only or hero strip */
+.section--dark {
+  background: var(--apx-void);
+  color: var(--apx-white);
+}
+.section--dark.is-dark { } /* marker class for descendants */
+
+.section--light-grey {
+  background: var(--apx-light);
+}
+
+.section--fog {
+  background: var(--apx-fog);
 }
 
 /* ============================================
-   PRODUCT CARD — monochrome, no chromatic glow
+   PRODUCT CARD - light surface, subtle border,
+   lime hover lift. The card is white-on-white with
+   a 1px border that goes lime on hover.
    ============================================ */
-
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -354,8 +483,8 @@ section {
 }
 
 .card {
-  background: var(--apx-carbon);
-  border: 1px solid var(--apx-wire);
+  background: var(--apx-white);
+  border: 1px solid var(--apx-ink-08);
   border-radius: var(--rad-lg);
   padding: var(--sp-7);
   position: relative;
@@ -369,33 +498,39 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.06), transparent 60%);
+  background: linear-gradient(135deg, var(--apx-lime-soft) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.4s var(--ease-out);
   pointer-events: none;
 }
 .card:hover {
-  background: var(--apx-graphite);
-  border-color: var(--apx-light-30);
-  transform: translateY(-4px);
+  border-color: var(--apx-lime);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px var(--apx-ink-08), 0 0 0 1px var(--apx-lime-line);
 }
-.card:hover::before {
-  opacity: 1;
+.card:hover::before { opacity: 1; }
+
+.is-dark .card,
+.section--dark .card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--apx-snow-08);
 }
-.card--warm::before {
-  background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.06), transparent 60%);
-}
-.card--warm:hover {
-  border-color: var(--apx-light-30);
+.is-dark .card:hover,
+.section--dark .card:hover {
+  border-color: var(--apx-lime);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px var(--apx-lime-line);
 }
 
 .card__sku {
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
   letter-spacing: 0.14em;
-  color: var(--apx-light-50);
+  color: var(--apx-grey-mid);
   text-transform: uppercase;
   margin-bottom: var(--sp-4);
+  position: relative;
+  z-index: 1;
 }
 
 .card__logo {
@@ -407,47 +542,62 @@ section {
   object-fit: contain;
   object-position: left center;
   margin-bottom: var(--sp-5);
-  image-rendering: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .card__title {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 1;
   margin-bottom: var(--sp-3);
+  color: var(--apx-void);
+  position: relative;
+  z-index: 1;
 }
+.is-dark .card__title,
+.section--dark .card__title { color: var(--apx-white); }
 
 .card__desc {
-  color: var(--apx-light-70);
+  color: var(--apx-grey-deep);
   margin-bottom: var(--sp-5);
   font-size: var(--fs-body-md);
+  line-height: 1.6;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
+.is-dark .card__desc,
+.section--dark .card__desc { color: var(--apx-snow-70); }
 
 .card__specs {
   display: flex;
-  gap: var(--sp-4);
+  gap: var(--sp-2);
   margin-bottom: var(--sp-5);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 .card__spec {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--apx-light);
+  color: var(--apx-charcoal);
   text-transform: uppercase;
-  padding: 4px 10px;
-  border: 1px solid var(--apx-light-30);
+  padding: 6px 12px;
+  border: 1px solid var(--apx-ink-12);
   border-radius: var(--rad-sm);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--apx-light);
+  font-weight: 600;
 }
-.card--warm .card__spec {
-  color: var(--apx-light);
-  border-color: var(--apx-light-30);
-  background: rgba(255, 255, 255, 0.04);
+.is-dark .card__spec,
+.section--dark .card__spec {
+  color: var(--apx-white);
+  border-color: var(--apx-snow-12);
+  background: var(--apx-snow-08);
 }
 
 .card__cta {
@@ -456,30 +606,69 @@ section {
   gap: var(--sp-3);
   font-family: var(--font-mono);
   font-size: var(--fs-mono);
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--apx-light);
+  color: var(--apx-void);
   margin-top: auto;
   padding-top: var(--sp-4);
-  border-top: 1px solid var(--apx-wire);
-  transition: color 0.2s;
+  border-top: 1px solid var(--apx-ink-08);
+  transition: color 0.2s, gap 0.25s var(--ease-crisp);
+  position: relative;
+  z-index: 1;
 }
 .card__cta:hover {
-  color: var(--apx-light-70);
+  color: var(--apx-lime-deep);
+  gap: var(--sp-4);
 }
-.card--warm .card__cta {
-  color: var(--apx-light);
+.is-dark .card__cta,
+.section--dark .card__cta {
+  color: var(--apx-white);
+  border-top-color: var(--apx-snow-08);
 }
+.is-dark .card__cta:hover,
+.section--dark .card__cta:hover { color: var(--apx-lime); }
 
 /* ============================================
-   FOOTER
+   STAT - hero metric callouts
+   The big numerals. Charcoal numbers, lime micro accents.
    ============================================ */
+.stat__value,
+.stat__value-warm {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  color: var(--apx-void);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.is-dark .stat__value,
+.is-dark .stat__value-warm,
+.section--dark .stat__value,
+.section--dark .stat__value-warm { color: var(--apx-white); }
 
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  color: var(--apx-grey-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-top: var(--sp-2);
+}
+.is-dark .stat__label,
+.section--dark .stat__label { color: var(--apx-snow-70); }
+
+/* ============================================
+   FOOTER - dark moment, white logo, lime tagline accent
+   This is one place we use the "30%" dark on purpose.
+   ============================================ */
 .footer {
-  border-top: 1px solid var(--apx-wire);
-  background: var(--apx-carbon);
+  background: var(--apx-void);
+  color: var(--apx-snow-70);
   padding: var(--sp-9) 0 var(--sp-6);
   margin-top: var(--sp-10);
+  border-top: 4px solid var(--apx-lime);
 }
 
 .footer__grid {
@@ -489,58 +678,65 @@ section {
   margin-bottom: var(--sp-8);
 }
 
-.footer__brand {
-  max-width: 360px;
+.footer__brand { max-width: 360px; }
+.footer .nav__brand-mark {
+  height: 44px;
+  max-width: 280px;
 }
 .footer__tagline {
   font-family: var(--font-display);
   font-size: 1.5rem;
+  font-weight: 800;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   margin-top: var(--sp-5);
   margin-bottom: var(--sp-4);
+  color: var(--apx-white);
 }
-.footer__tagline span { color: var(--apx-light); }
+.footer__tagline span { color: var(--apx-lime); }
+
 .footer__small {
-  color: var(--apx-light-70);
+  color: var(--apx-snow-70);
   font-size: var(--fs-body-sm);
+  line-height: 1.6;
 }
 
 .footer__col h4 {
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  color: var(--apx-light-50);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--apx-snow-50);
   margin-bottom: var(--sp-4);
   text-transform: uppercase;
-  font-family: var(--font-mono);
-  font-weight: 500;
 }
 .footer__col ul { list-style: none; }
 .footer__col li { margin-bottom: var(--sp-3); }
 .footer__col a {
-  color: var(--apx-light-70);
+  color: var(--apx-snow-70);
   font-size: var(--fs-body-sm);
+  font-weight: 500;
 }
-.footer__col a:hover { color: var(--apx-light); }
+.footer__col a:hover { color: var(--apx-lime); }
 
 .footer__strip {
-  border-top: 1px solid var(--apx-wire);
+  border-top: 1px solid var(--apx-snow-08);
   padding-top: var(--sp-5);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--apx-light-50);
+  color: var(--apx-snow-50);
 }
-.footer__strip a { color: var(--apx-light); }
+.footer__strip a { color: var(--apx-lime); }
+.footer__strip a:hover { color: var(--apx-white); }
 
 @media (max-width: 900px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__strip {
     flex-direction: column;
     gap: var(--sp-3);
@@ -549,13 +745,104 @@ section {
 }
 
 /* ============================================
+   FORM PRIMITIVES - clean, accessible, lime focus
+   ============================================ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-5);
+}
+.field__label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--apx-grey-deep);
+}
+.field__input,
+.field__textarea,
+.field__select {
+  padding: 14px 18px;
+  border: 1px solid var(--apx-ink-12);
+  border-radius: var(--rad-md);
+  background: var(--apx-white);
+  color: var(--apx-void);
+  font-family: var(--font-body);
+  font-size: var(--fs-body-md);
+  transition: border-color 0.2s var(--ease-crisp), box-shadow 0.2s var(--ease-crisp);
+  width: 100%;
+}
+.field__input:focus,
+.field__textarea:focus,
+.field__select:focus {
+  outline: none;
+  border-color: var(--apx-lime);
+  box-shadow: 0 0 0 4px var(--apx-lime-glow);
+}
+.field__textarea { min-height: 140px; resize: vertical; }
+.field__hint {
+  font-size: var(--fs-body-sm);
+  color: var(--apx-grey-mid);
+}
+.field__error {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  color: var(--apx-error);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.is-dark .field__input,
+.is-dark .field__textarea,
+.is-dark .field__select {
+  background: var(--apx-snow-08);
+  border-color: var(--apx-snow-12);
+  color: var(--apx-white);
+}
+.is-dark .field__label { color: var(--apx-snow-70); }
+
+/* ============================================
+   PILL - status badge, "in stock", "trade only"
+   ============================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 4px 12px;
+  border-radius: var(--rad-pill);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.pill--lime    { background: var(--apx-lime); color: var(--apx-void); }
+.pill--success { background: rgba(34, 197, 94, 0.15); color: #15803D; }
+.pill--warn    { background: rgba(245, 158, 11, 0.15); color: #B45309; }
+.pill--error   { background: rgba(239, 68, 68, 0.15); color: #B91C1C; }
+.pill--ghost   { background: var(--apx-light); color: var(--apx-grey-deep); border: 1px solid var(--apx-ink-08); }
+
+/* ============================================
    UTILITIES
    ============================================ */
+.mono     { font-family: var(--font-mono); }
+.mist     { color: var(--apx-grey-mid); }
+.is-dark .mist { color: var(--apx-snow-70); }
+.xenon    { color: var(--apx-lime); }   /* legacy alias - lime now */
+.flare    { color: var(--apx-lime); }
+.text-lime { color: var(--apx-lime); }
+.text-white { color: var(--apx-white); }
+.text-charcoal { color: var(--apx-charcoal); }
+.text-void { color: var(--apx-void); }
 
-.mono { font-family: var(--font-mono); }
-.mist { color: var(--apx-light-70); }
-.xenon { color: var(--apx-light); }   /* legacy alias */
-.flare { color: var(--apx-light); }   /* legacy alias */
+.bg-white { background: var(--apx-white); }
+.bg-light { background: var(--apx-light); }
+.bg-fog   { background: var(--apx-fog); }
+.bg-mist  { background: var(--apx-fog); } /* legacy alias */
+.bg-void  { background: var(--apx-void); color: var(--apx-white); }
+.bg-lime  { background: var(--apx-lime); color: var(--apx-void); }
 
 .reveal {
   opacity: 0;
@@ -569,7 +856,32 @@ section {
 
 .divider {
   height: 1px;
-  background: var(--apx-wire);
+  background: var(--apx-ink-08);
   border: none;
   margin: var(--sp-8) 0;
+}
+.divider--lime {
+  height: 4px;
+  width: 80px;
+  background: var(--apx-lime);
+  border-radius: var(--rad-sm);
+  margin: var(--sp-6) 0;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--apx-lime);
+  outline-offset: 3px;
+  border-radius: var(--rad-sm);
 }
