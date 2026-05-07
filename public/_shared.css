@@ -228,9 +228,9 @@ input, textarea, select {
 
 .nav__brand-mark {
   display: block;
-  height: 36px;
+  height: 52px;
   width: auto;
-  max-width: 220px;
+  max-width: 280px;
   object-fit: contain;
   transition: opacity 0.2s var(--ease-crisp);
 }
@@ -678,10 +678,11 @@ section {
   margin-bottom: var(--sp-8);
 }
 
-.footer__brand { max-width: 360px; }
+.footer__brand { max-width: 380px; }
 .footer .nav__brand-mark {
-  height: 44px;
-  max-width: 280px;
+  height: 72px;
+  max-width: 360px;
+  margin-bottom: var(--sp-3);
 }
 .footer__tagline {
   font-family: var(--font-display);
